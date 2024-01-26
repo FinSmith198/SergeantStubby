@@ -6,8 +6,7 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="02956651-25b0-4bb1-b8f4-d9af57708a1c" name="Changes" comment="now tracks output jar">
-      <change beforePath="$PROJECT_DIR$/.idea/artifacts/latest_stubby.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/artifacts/latest_stubby.xml" afterDir="false" />
+    <list default="true" id="02956651-25b0-4bb1-b8f4-d9af57708a1c" name="Changes" comment="fixed output of jar - added metaMF and Manifest file, as that was missing">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/latest_stubby.jar" beforeDir="false" afterPath="$PROJECT_DIR$/latest_stubby.jar" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/SergeantStubby.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SergeantStubby.java" afterDir="false" />
@@ -34,13 +33,14 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src" />
     <property name="project.structure.last.edited" value="Artifacts" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Finla\Documents\Code\StubbyBot\SergeantStubby\src" />
       <recent name="C:\Users\Finla\Documents\Code\StubbyBot\SergeantStubby" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
@@ -79,7 +79,7 @@
       <workItem from="1706222847350" duration="91000" />
       <workItem from="1706223009643" duration="1972000" />
       <workItem from="1706285274349" duration="1190000" />
-      <workItem from="1706288050802" duration="450000" />
+      <workItem from="1706288050802" duration="1370000" />
     </task>
     <task id="LOCAL-00001" summary="Added all of 1.2.6 stubby to the Git">
       <created>1706223801574</created>
@@ -109,7 +109,14 @@
       <option name="project" value="LOCAL" />
       <updated>1706285765720</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="fixed output of jar - added metaMF and Manifest file, as that was missing">
+      <created>1706288622992</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1706288622992</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -131,6 +138,7 @@
     <MESSAGE value="added dependencies, and jar build output to main" />
     <MESSAGE value="added" />
     <MESSAGE value="now tracks output jar" />
-    <option name="LAST_COMMIT_MESSAGE" value="now tracks output jar" />
+    <MESSAGE value="fixed output of jar - added metaMF and Manifest file, as that was missing" />
+    <option name="LAST_COMMIT_MESSAGE" value="fixed output of jar - added metaMF and Manifest file, as that was missing" />
   </component>
 </project>
