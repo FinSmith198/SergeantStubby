@@ -34,7 +34,7 @@ public class Config {
             databaseConnection.close();
 
         } catch (ClassNotFoundException | SQLException e) {
-            e.printStackTrace();
+            e.fillInStackTrace();
         }
     }
 
