@@ -7,9 +7,6 @@ Before trying to use this code, please note that it is specifically built for th
 
 
 
-## Discord Features
-
-
 # Slash Commands  
 ## Fun/Useful Commands  
 ### Set Activity 
