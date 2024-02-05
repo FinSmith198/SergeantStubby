@@ -31,6 +31,7 @@ public class WelcomeMessageListener extends ListenerAdapter {
         eb.addField("\nNotices", "If you need any admin assistance please contact an admin via https://discord.com/channels/1001456689851146331/1001508754338103337. \nOr type \"!admin {message}\" for in-game HLL assistance in the in-game chat.", false);
         eb.setFooter("-Sgt. Stubby");
 
+        // try sending message to user, else print error
         try{
             Consumer<PrivateChannel> messageSender = channel -> channel.sendMessageEmbeds(eb.build()).queue();
             member.getUser().openPrivateChannel().queue(messageSender);
@@ -96,12 +97,9 @@ public class WelcomeMessageListener extends ListenerAdapter {
 
     @Override
     public void onMessageReceived(MessageReceivedEvent event) {
-
         String message = event.getMessage().getContentRaw();
         if (message.equalsIgnoreCase("hello stubby")){
             event.getChannel().sendMessage("Hi!").queue();
         }
-
-
     }
 }
