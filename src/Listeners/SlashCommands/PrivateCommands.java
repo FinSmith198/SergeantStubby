@@ -21,16 +21,18 @@ public class PrivateCommands extends ListenerAdapter {
 
         // give Stubby's version
         switch (command) {
-            case "version" -> {
+            case "version" : {
                 event.deferReply(true).queue();
                 event.getHook().sendMessage("Current version is v1.2.6.1").queue();
+                break;
             }
-            case "terminate" -> {
+            case "terminate" : {
                 event.deferReply(true).queue();
                 event.getHook().sendMessage("Stopping Stubby...").queue();
                 System.exit(0);
+                break;
             }
-            case "send-message" -> {
+            case "send-message" : {
                 event.deferReply(true).queue();
                 try {
                     TextChannel text_channel = Bot.getInstance().jda.getTextChannelById(Objects.requireNonNull(event.getOption("channel-id")).getAsString());
@@ -41,8 +43,9 @@ public class PrivateCommands extends ListenerAdapter {
                 } catch (Exception e) {
                     event.getHook().sendMessage("Message was not sent, perhaps the channel-ID, or message-ID is incorrect?\nMake sure the referenced message is also in the same channel as your use of this command.").queue();
                 }
+                break;
             }
-            case "execute-sql" -> {
+            case "execute-sql" : {
                 event.deferReply().queue();
                 StringBuilder response = new StringBuilder("The SQL was Successfully Run");
                 try {
@@ -93,6 +96,7 @@ public class PrivateCommands extends ListenerAdapter {
                 } catch (Exception e) {
                     event.getHook().sendMessage("Command Failed.\n" + e.getMessage()).queue();
                 }
+                break;
             }
         }
 
