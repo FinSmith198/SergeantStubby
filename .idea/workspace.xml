@@ -6,9 +6,9 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="02956651-25b0-4bb1-b8f4-d9af57708a1c" name="Changes" comment="Added DDR support for DD auto-message upon role add.">
+    <list default="true" id="02956651-25b0-4bb1-b8f4-d9af57708a1c" name="Changes" comment="bugfix with managing [DD] and [DDR] tags upon role add and removal - now works?">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Listeners/TagRestrictorListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Listeners/TagRestrictorListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Listeners/SlashCommands/PrivateCommands.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Listeners/SlashCommands/PrivateCommands.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,7 +47,7 @@
       <recent name="C:\Users\Finla\Documents\Code\StubbyBot\SergeantStubby" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Stubby Run">
+  <component name="RunManager" selected="JAR Application.Stubby jar build">
     <configuration name="Stubby Run" type="Application" factoryName="Application">
       <option name="ALTERNATIVE_JRE_PATH" value="18" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
@@ -81,7 +81,7 @@
       <workItem from="1706285274349" duration="1190000" />
       <workItem from="1706288050802" duration="3027000" />
       <workItem from="1706467093012" duration="954000" />
-      <workItem from="1707147809731" duration="5415000" />
+      <workItem from="1707147809731" duration="5658000" />
     </task>
     <task id="LOCAL-00001" summary="Added all of 1.2.6 stubby to the Git">
       <created>1706223801574</created>
@@ -132,7 +132,21 @@
       <option name="project" value="LOCAL" />
       <updated>1707152239809</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="bugfix with managing [DD] and [DDR] tags upon role add and removal - now works?">
+      <created>1707153949528</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1707153949528</updated>
+    </task>
+    <task id="LOCAL-00009" summary="bugfix with managing [DD] and [DDR] tags upon role add and removal - now works?">
+      <created>1707154006854</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1707154006854</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -156,6 +170,7 @@
     <MESSAGE value="now tracks output jar" />
     <MESSAGE value="fixed output of jar - added metaMF and Manifest file, as that was missing" />
     <MESSAGE value="Added DDR support for DD auto-message upon role add." />
-    <option name="LAST_COMMIT_MESSAGE" value="Added DDR support for DD auto-message upon role add." />
+    <MESSAGE value="bugfix with managing [DD] and [DDR] tags upon role add and removal - now works?" />
+    <option name="LAST_COMMIT_MESSAGE" value="bugfix with managing [DD] and [DDR] tags upon role add and removal - now works?" />
   </component>
 </project>
