@@ -7,7 +7,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="02956651-25b0-4bb1-b8f4-d9af57708a1c" name="Changes" comment="changed ping version command to 1.2.6.1, the current one">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -81,7 +80,7 @@
       <workItem from="1706285274349" duration="1190000" />
       <workItem from="1706288050802" duration="3027000" />
       <workItem from="1706467093012" duration="954000" />
-      <workItem from="1707147809731" duration="9011000" />
+      <workItem from="1707147809731" duration="10982000" />
     </task>
     <task id="LOCAL-00001" summary="Added all of 1.2.6 stubby to the Git">
       <created>1706223801574</created>
@@ -153,7 +152,14 @@
       <option name="project" value="LOCAL" />
       <updated>1707154184413</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="changed ping version command to 1.2.6.1, the current one">
+      <created>1707161570842</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1707161570842</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
