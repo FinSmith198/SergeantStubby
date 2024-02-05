@@ -109,14 +109,35 @@ public class TagRestrictorListener extends ListenerAdapter {
         }
 
         for (Role role : roles){
-            // no DD role, not DDR recruit
-            if (!role.getId().equals(DDroleID)){
-                if (!role.getId().equals(DDRroleID)) {
+            // new DD role:
+            if (role.getId().equals(DDroleID)) {
+
+                // member -> DD (no message)
+                if (!member.getRoles().contains(event.getGuild().getRoleById(DDRroleID))) {
+                    changeNickName(member, " [DD]");
                     continue;
                 }
 
-                // IS DDR Recruit
+                // DDR -> DD (send message):
+                event.getGuild().removeRoleFromMember(member.getUser(), Objects.requireNonNull(event.getGuild().getRoleById(DDRroleID))).queue();
+                changeNickName(member, " [DD]");
+
+                // promotion message
+                if (!Bot.getPromotionMessageStatus()) return;
+                if (!new_DD_members.contains(member.getId())) new_DD_members.add(member.getId());
+
+                updateDDHandle(event.getGuild());
+                return;
+            }
+            // new DDR role:
+            else if (role.getId().equals(DDRroleID)) {
                 changeNickName(member, " [DDR]");
+
+                // but already a DD Member (no message)
+                if (member.getRoles().contains(event.getGuild().getRoleById(DDroleID)))
+                    continue;
+
+                // new DDR member (send message):
 
                 // recruitment message
                 if (!Bot.getPromotionMessageStatus()) return;
@@ -125,24 +146,6 @@ public class TagRestrictorListener extends ListenerAdapter {
                 updateDDRHandle(event.getGuild());
                 return;
             }
-
-            // DD member with no previous DDR role
-            if (!member.getRoles().contains(event.getGuild().getRoleById(DDRroleID))) {
-                changeNickName(member, " [DD]");
-                break;
-            }
-
-            // remove DDR, add DD to nickname
-            event.getGuild().removeRoleFromMember(member.getUser(), Objects.requireNonNull(event.getGuild().getRoleById(DDRroleID))).queue();
-            changeNickName(member, " [DD]");
-
-            // promotion message
-            if (!Bot.getPromotionMessageStatus()) return;
-            if (!new_DD_members.contains(member.getId())) new_DD_members.add(member.getId());
-
-            updateDDHandle(event.getGuild());
-
-            return;
 
         }
     }
@@ -190,6 +193,7 @@ public class TagRestrictorListener extends ListenerAdapter {
             member.modifyNickname(member.getEffectiveName().replaceAll(regex, replacement).strip()).queue();
         } catch (HierarchyException | NullPointerException ignored){}
     }
+
 
     public void updateDDHandle(@NotNull Guild guild){
         try {

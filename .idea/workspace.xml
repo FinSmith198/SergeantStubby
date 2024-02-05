@@ -8,11 +8,7 @@
   <component name="ChangeListManager">
     <list default="true" id="02956651-25b0-4bb1-b8f4-d9af57708a1c" name="Changes" comment="Added DDR support for DD auto-message upon role add.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Listeners/BotReadier.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Listeners/BotReadier.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Listeners/MemberCounter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Listeners/MemberCounter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Listeners/SlashCommands/AdminCommands.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Listeners/SlashCommands/AdminCommands.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Listeners/TagRestrictorListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Listeners/TagRestrictorListener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Listeners/WelcomeMessageListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Listeners/WelcomeMessageListener.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,6 +27,7 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
@@ -84,7 +81,7 @@
       <workItem from="1706285274349" duration="1190000" />
       <workItem from="1706288050802" duration="3027000" />
       <workItem from="1706467093012" duration="954000" />
-      <workItem from="1707147809731" duration="3744000" />
+      <workItem from="1707147809731" duration="5415000" />
     </task>
     <task id="LOCAL-00001" summary="Added all of 1.2.6 stubby to the Git">
       <created>1706223801574</created>
@@ -128,7 +125,14 @@
       <option name="project" value="LOCAL" />
       <updated>1706291928067</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Added DDR support for DD auto-message upon role add.">
+      <created>1707152239809</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1707152239809</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
