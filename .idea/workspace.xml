@@ -6,10 +6,7 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="02956651-25b0-4bb1-b8f4-d9af57708a1c" name="Changes" comment="changed ping version command to 1.2.6.1, the current one">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="02956651-25b0-4bb1-b8f4-d9af57708a1c" name="Changes" comment="changed ping version command to 1.2.6.1, the current one" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -179,6 +176,7 @@
     <MESSAGE value="Added DDR support for DD auto-message upon role add." />
     <MESSAGE value="bugfix with managing [DD] and [DDR] tags upon role add and removal - now works?" />
     <MESSAGE value="changed ping version command to 1.2.6.1, the current one" />
-    <option name="LAST_COMMIT_MESSAGE" value="changed ping version command to 1.2.6.1, the current one" />
+    <MESSAGE value="settings update" />
+    <option name="LAST_COMMIT_MESSAGE" value="settings update" />
   </component>
 </project>

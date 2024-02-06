@@ -7,14 +7,12 @@ import net.dv8tion.jda.api.entities.MessageHistory;
 import net.dv8tion.jda.api.entities.channel.concrete.TextChannel;
 import net.dv8tion.jda.api.events.interaction.command.SlashCommandInteractionEvent;
 import net.dv8tion.jda.api.events.session.ReadyEvent;
-import net.dv8tion.jda.api.exceptions.ErrorResponseException;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
 import org.jetbrains.annotations.NotNull;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
-import org.sqlite.util.StringUtils;
 
 import java.awt.*;
 import java.io.*;
@@ -24,7 +22,6 @@ import java.sql.*;
 import java.time.*;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
-import java.util.Date;
 import java.util.List;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
@@ -184,7 +181,6 @@ public class HLListener extends ListenerAdapter {
 
             } catch (Exception e){
                 reply = "Added "+i+" out of "+player_num+" to the vip list, something went wrong.\nError Message: "+e.getMessage();
-                e.printStackTrace();
             }
 
             event.getHook().sendMessage(reply).queue();
@@ -286,7 +282,7 @@ public class HLListener extends ListenerAdapter {
                         // update people's usernames and seeding time if server is not already seeded
 
                         // only true if server is up, but with nobody on it, or server is down. so, there's no point doing rest of the function
-                        if (playerStats.size() == 0) {
+                        if (playerStats.isEmpty()) {
                             oldPlayerStats = new JSONArray();
                             return;
                         }
@@ -307,7 +303,7 @@ public class HLListener extends ListenerAdapter {
 
                             // check if the returned value is valid
                             if (player_stat.get("profile") == null) continue;
-                            if (player_stat.get("steam_id_64").toString().replaceAll("[0-9]+", "").length() != 0) continue;
+                            if (!player_stat.get("steam_id_64").toString().replaceAll("[0-9]+", "").isEmpty()) continue;
 
                             String formatted_name = player_stat.get("name").toString().replaceAll("'", "").replaceAll("\"", "");
 
