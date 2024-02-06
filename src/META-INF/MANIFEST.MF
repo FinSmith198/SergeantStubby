@@ -1,0 +1,4 @@
+Manifest-Version: 1.0
+Main-Class: SergeantStubby
+Class-Path: lib/JDA-5.0.0-beta.11-withDependencies.jar lib/sqlite-jdbc-3.42.0.0.jar lib/json-simple-1.1.1.jar
+

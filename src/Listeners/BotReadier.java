@@ -103,7 +103,7 @@ public class BotReadier extends ListenerAdapter {
         commandData.add(Commands.slash("set-dogtags", "Turns On/Off the management of DD and DDR tags in a user's nickname, based off server roles").addOptions(
                 new OptionData(OptionType.BOOLEAN, "set", "True means Stubby will automatically manage DD and DDR tags, False means not", true))
                 .setDefaultPermissions(DefaultMemberPermissions.enabledFor(Permission.MANAGE_SERVER)));
-        commandData.add(Commands.slash("set-dd-promotion-message", "Turns On/Off the congratulation auto-message that will post when a DDR gets promoted to DD. On Timer").addOptions(
+        commandData.add(Commands.slash("set-dd-promotion-message", "Turns On/Off the auto-message that posts when member -> DDR, and DDR -> DD. On Delay").addOptions(
                         new OptionData(OptionType.BOOLEAN, "set", "True means Stubby will post a message welcoming the new members of DD in DD_General, False means not", true))
                 .setDefaultPermissions(DefaultMemberPermissions.enabledFor(Permission.MANAGE_SERVER)));
 

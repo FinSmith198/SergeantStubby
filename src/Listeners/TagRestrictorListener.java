@@ -2,6 +2,7 @@ package Listeners;
 
 import Classes.Bot;
 import net.dv8tion.jda.api.Permission;
+import net.dv8tion.jda.api.entities.Guild;
 import net.dv8tion.jda.api.entities.Member;
 import net.dv8tion.jda.api.entities.Role;
 import net.dv8tion.jda.api.entities.channel.concrete.PrivateChannel;
@@ -32,8 +33,11 @@ public class TagRestrictorListener extends ListenerAdapter {
 
     // variables needed to maintain the 'promotion from DDR to DD' message in general
     private ScheduledFuture<?> DD_handle;
+    private ScheduledFuture<?> DDR_handle;
     private final ScheduledExecutorService DD_executor = Executors.newScheduledThreadPool(1);
+    private final ScheduledExecutorService DDR_executor = Executors.newScheduledThreadPool(1);
     private List<String> new_DD_members = new ArrayList<>();
+    private List<String> new_DDR_members = new ArrayList<>();
     StringBuilder promotion_message;
 
 
@@ -105,56 +109,46 @@ public class TagRestrictorListener extends ListenerAdapter {
         }
 
         for (Role role : roles){
-            if (role.getId().equals(DDroleID)){
+            // new DD role:
+            if (role.getId().equals(DDroleID)) {
 
-                // DDR member with DD role added
-                if (member.getRoles().contains(event.getGuild().getRoleById(DDRroleID))){
-
-                    event.getGuild().removeRoleFromMember(member.getUser(), Objects.requireNonNull(event.getGuild().getRoleById(DDRroleID))).queue();
+                // member -> DD (no message)
+                if (!member.getRoles().contains(event.getGuild().getRoleById(DDRroleID))) {
                     changeNickName(member, " [DD]");
-
-                    if (!Bot.getPromotionMessageStatus()) return;
-                    if (!new_DD_members.contains(member.getId())) new_DD_members.add(member.getId());
-
-                    try {
-                        DD_handle.cancel(false);
-                    } catch (NullPointerException ignored){}
-
-                    DD_handle = DD_executor.schedule(() ->{
-                                if (new_DD_members.isEmpty()) return;
-
-                                String[] emojis = new String[]{"<:Dog:1010471609305419796>", "<:HLLSalute:1012735244597743636>", "<:DDMaj:1022809742638338058>"};
-                                // Bot Testing Server
-                                if (event.getGuild().getId().equals("821405370014629930")) emojis = new String[]{"<:Dog:1121032301522997299>", "<:HLLSalute:1121032288436768930>", "<:DDMaj:1121032268291510303>"};
-
-                                if (new_DD_members.size() == 1){
-                                    promotion_message = new StringBuilder(String.format("Welcome to the new member: <@%s> %s \nCongratulations on becoming a full member of DD! %s", new_DD_members.get(0), emojis[1], emojis[0]));
-                                } else if (new_DD_members.size() == 2){
-                                    promotion_message = new StringBuilder(String.format("Welcome to the new members: <@%s> and <@%s> %s \nCongratulations to both of you, on becoming full members of DD! %s", new_DD_members.get(0), new_DD_members.get(1), emojis[1], emojis[0]));
-                                } else {
-                                    promotion_message = new StringBuilder("Welcome to the new members: <@").append(new_DD_members.get(0)).append(">");
-                                    for (int i = 1; i < new_DD_members.size(); i++){
-                                        promotion_message.append(", <@").append(new_DD_members.get(i)).append(">");
-                                    }
-                                    promotion_message.append(String.format("%s \nCongratulations, all of you, on becoming full members of DD! %s", emojis[1], emojis[0]));
-                                }
-                                new_DD_members.clear();
-                                Objects.requireNonNull(event.getGuild().getTextChannelById(DDGeneral)).sendMessage(promotion_message.toString()).queue();
-                            }
-                    , 30, TimeUnit.SECONDS);
-
-
+                    continue;
                 }
-                else changeNickName(member, " [DD]");
-                break;
 
-            } else if (role.getId().equals(DDRroleID)){
-                changeNickName(member, " [DDR]");
-                break;
+                // DDR -> DD (send message):
+                event.getGuild().removeRoleFromMember(member.getUser(), Objects.requireNonNull(event.getGuild().getRoleById(DDRroleID))).queue();
+                changeNickName(member, " [DD]");
+
+                // promotion message
+                if (!Bot.getPromotionMessageStatus()) return;
+                if (!new_DD_members.contains(member.getId())) new_DD_members.add(member.getId());
+
+                updateDDHandle(event.getGuild());
+                return;
             }
+            // new DDR role:
+            else if (role.getId().equals(DDRroleID)) {
+                changeNickName(member, " [DDR]");
+
+                // but already a DD Member (no message)
+                if (member.getRoles().contains(event.getGuild().getRoleById(DDroleID)))
+                    continue;
+
+                // new DDR member (send message):
+
+                // recruitment message
+                if (!Bot.getPromotionMessageStatus()) return;
+                if (!new_DDR_members.contains(member.getId())) new_DDR_members.add(member.getId());
+
+                updateDDRHandle(event.getGuild());
+                return;
+            }
+
         }
     }
-
 
 
     @Override
@@ -198,6 +192,66 @@ public class TagRestrictorListener extends ListenerAdapter {
         try {
             member.modifyNickname(member.getEffectiveName().replaceAll(regex, replacement).strip()).queue();
         } catch (HierarchyException | NullPointerException ignored){}
+    }
+
+
+    public void updateDDHandle(@NotNull Guild guild){
+        try {
+            DD_handle.cancel(false);
+        } catch (NullPointerException ignored){}
+
+        DD_handle = DD_executor.schedule(() ->{
+                    if (new_DD_members.isEmpty()) return;
+
+                    String[] emojis = new String[]{"<:Dog:1010471609305419796>", "<:HLLSalute:1012735244597743636>", "<:DDMaj:1022809742638338058>"};
+                    // Bot Testing Server
+                    if (guild.getId().equals("821405370014629930")) emojis = new String[]{"<:Dog:1121032301522997299>", "<:HLLSalute:1121032288436768930>", "<:DDMaj:1121032268291510303>"};
+
+                    if (new_DD_members.size() == 1){
+                        promotion_message = new StringBuilder(String.format("Welcome to the new member: <@%s> %s \nCongratulations on becoming a full member of DD! %s", new_DD_members.get(0), emojis[1], emojis[0]));
+                    } else if (new_DD_members.size() == 2){
+                        promotion_message = new StringBuilder(String.format("Welcome to the new members: <@%s> and <@%s> %s \nCongratulations to both of you, on becoming full members of DD! %s", new_DD_members.get(0), new_DD_members.get(1), emojis[1], emojis[0]));
+                    } else {
+                        int i = 0;
+                        promotion_message = new StringBuilder("Welcome to the new members: <@").append(new_DD_members.get(i++)).append(">");
+                        for (; i < new_DD_members.size() - 1; i++){
+                            promotion_message.append(", <@").append(new_DD_members.get(i)).append(">");
+                        }
+                        promotion_message.append(String.format(", and <@%s> %s \nCongratulations, all of you, on becoming full members of DD! %s", new_DD_members.get(i), emojis[1], emojis[0]));
+                    }
+                    new_DD_members.clear();
+                    Objects.requireNonNull(guild.getTextChannelById(DDGeneral)).sendMessage(promotion_message.toString()).queue();
+                }
+                , 30, TimeUnit.SECONDS);
+    }
+    public void updateDDRHandle(@NotNull Guild guild){
+        try {
+            DDR_handle.cancel(false);
+        } catch (NullPointerException ignored){}
+
+        DDR_handle = DDR_executor.schedule(() ->{
+                    if (new_DDR_members.isEmpty()) return;
+
+                    String[] emojis = new String[]{"<:Dog:1010471609305419796>", "<:HLLSalute:1012735244597743636>", "<:DDMaj:1022809742638338058>"};
+                    // Bot Testing Server
+                    if (guild.getId().equals("821405370014629930")) emojis = new String[]{"<:Dog:1121032301522997299>", "<:HLLSalute:1121032288436768930>", "<:DDMaj:1121032268291510303>"};
+
+                    if (new_DDR_members.size() == 1){
+                        promotion_message = new StringBuilder(String.format("Welcome to our newest recruit: <@%s>! %s", new_DDR_members.get(0), emojis[0]));
+                    } else if (new_DDR_members.size() == 2){
+                        promotion_message = new StringBuilder(String.format("Welcome to the new recruits: <@%s> and <@%s>! %s", new_DDR_members.get(0), new_DDR_members.get(1), emojis[0]));
+                    } else {
+                        int i = 0;
+                        promotion_message = new StringBuilder("Welcome to the new recruits: <@").append(new_DDR_members.get(i++)).append(">");
+                        for (; i < new_DDR_members.size() - 1; i++){
+                            promotion_message.append(", <@").append(new_DDR_members.get(i)).append(">");
+                        }
+                        promotion_message.append(String.format(", and <@%s>! %s", new_DDR_members.get(i), emojis[0]));
+                    }
+                    new_DDR_members.clear();
+                    Objects.requireNonNull(guild.getTextChannelById(DDGeneral)).sendMessage(promotion_message.toString()).queue();
+                }
+                , 30, TimeUnit.SECONDS);
     }
 
 }
