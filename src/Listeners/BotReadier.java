@@ -29,7 +29,7 @@ public class BotReadier extends ListenerAdapter {
     @Override
     public void onSlashCommandInteraction(@NotNull SlashCommandInteractionEvent event) {
         // log all commands to bot spam log in test guild server
-        Objects.requireNonNull(Bot.getInstance().jda.getTextChannelById("821410427111866409")).sendMessage(Objects.requireNonNull(event.getMember()).getEffectiveName() +" used "+event.getCommandString()).queue();
+        Objects.requireNonNull(Bot.jda.getTextChannelById("821410427111866409")).sendMessage(Objects.requireNonNull(event.getMember()).getEffectiveName() +" used "+event.getCommandString()).queue();
     }
 
     // add commands to guilds, and guild members to database
@@ -40,7 +40,6 @@ public class BotReadier extends ListenerAdapter {
         System.out.println(event.getGuild().getName()+" guild ready");
         List<CommandData> commandData = new ArrayList<>();
 
-        System.out.println(event.getGuild().getId());
 
         // only test server
         if (event.getGuild().getId().equals(Config.TEST_GUILD_ID)){

@@ -9,11 +9,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="02956651-25b0-4bb1-b8f4-d9af57708a1c" name="Changes" comment="changed stuff">
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+    <list default="true" id="02956651-25b0-4bb1-b8f4-d9af57708a1c" name="Changes" comment="Major Code refactor from config singleton into static variables">
+      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Classes/Config.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Classes/Config.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Classes/Bot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Classes/Bot.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Listeners/BotReadier.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Listeners/BotReadier.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Listeners/SlashCommands/FunCommands.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Listeners/SlashCommands/FunCommands.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Listeners/SlashCommands/PrivateCommands.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Listeners/SlashCommands/PrivateCommands.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/SergeantStubby.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SergeantStubby.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,25 +46,31 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Finla/Documents/Stubby/SergeantStubby/src/Listeners/SlashCommands/AbstractClasses&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.Stubby Run.executor": "Run",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/Finla/Documents/Stubby/SergeantStubby/src/Listeners/SlashCommands/AbstractClasses",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "vue.rearranger.settings.migration": "true"
+  },
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "sqlite"
+    ]
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\Finla\Documents\Stubby\SergeantStubby\src\Listeners\SlashCommands\AbstractClasses" />
@@ -115,6 +125,8 @@
       <workItem from="1708445066649" duration="248000" />
       <workItem from="1708534710044" duration="43000" />
       <workItem from="1710502870414" duration="3777000" />
+      <workItem from="1710519244952" duration="1732000" />
+      <workItem from="1710521097372" duration="593000" />
     </task>
     <task id="LOCAL-00001" summary="Added all of 1.2.6 stubby to the Git">
       <created>1706223801574</created>
@@ -194,7 +206,23 @@
       <option name="project" value="LOCAL" />
       <updated>1707220253353</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="Code refactor">
+      <option name="closed" value="true" />
+      <created>1710519268867</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1710519268867</updated>
+    </task>
+    <task id="LOCAL-00013" summary="Major Code refactor from config singleton into static variables">
+      <option name="closed" value="true" />
+      <created>1710520977449</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1710520977449</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -222,6 +250,8 @@
     <MESSAGE value="changed ping version command to 1.2.6.1, the current one" />
     <MESSAGE value="settings update" />
     <MESSAGE value="changed stuff" />
-    <option name="LAST_COMMIT_MESSAGE" value="changed stuff" />
+    <MESSAGE value="Code refactor" />
+    <MESSAGE value="Major Code refactor from config singleton into static variables" />
+    <option name="LAST_COMMIT_MESSAGE" value="Major Code refactor from config singleton into static variables" />
   </component>
 </project>

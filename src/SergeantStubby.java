@@ -7,8 +7,11 @@ public class SergeantStubby {
 
     public static void main(String[] args) throws Exception {
 
+        // initialise Config data from the database
+        Config.init("DDServerData.db");
+
         // create the bot instance with certain token
-        Bot.getInstance((String) Config.getInstance("DDServerData.db").config.get("DISCORD_TOKEN"));
+        Bot.init(Config.DISCORD_TOKEN);
 
     }
 
