@@ -17,15 +17,14 @@ import java.sql.SQLException;
 import java.util.List;
 
 public class Bot {
-    private static Bot bot_instance = null;
     private static final TagRestrictorListener dog_tag_restrictor = new TagRestrictorListener();
     private static boolean is_tag_restrictor_active = true;
     private static boolean is_promotion_message_active = true;
 
-    public JDA jda;
+    public static JDA jda;
 
 
-    private Bot(String TOKEN) throws InterruptedException {
+    public static void init(String TOKEN) throws InterruptedException {
 
         JDABuilder builder = JDABuilder.createDefault(TOKEN)
                 .setMemberCachePolicy(MemberCachePolicy.ALL)
@@ -45,22 +44,6 @@ public class Bot {
 
     }
 
-    private Bot() {
-
-    }
-
-    public static Bot getInstance() {
-        if (bot_instance == null)
-            bot_instance = new Bot();
-        return bot_instance;
-    }
-
-    public static Bot getInstance(String token) throws InterruptedException {
-        if (bot_instance == null)
-            bot_instance = new Bot(token);
-        return bot_instance;
-    }
-
 
     public static boolean setTagRestrictor(boolean set) {
         // if user wants to set listener to what it already set to, e.g. trying to turn the lights on when they're already on,
@@ -70,11 +53,11 @@ public class Bot {
         }
 
         if (set) {
-            Bot.getInstance().jda.addEventListener(dog_tag_restrictor);
+            jda.addEventListener(dog_tag_restrictor);
             return is_tag_restrictor_active = true;
         }
 
-        Bot.getInstance().jda.removeEventListener(dog_tag_restrictor);
+        jda.removeEventListener(dog_tag_restrictor);
         return is_tag_restrictor_active = false;
     }
 
@@ -156,14 +139,12 @@ public class Bot {
 
     // return current level, and xp to next level
     public static long[] getMemberLevel(long xp){
-        final long STARTING_DIFFERENTIAL = (long) Config.getInstance().config.get("START_LEVEL");
-        final long LEVEL_DIFFERENTIAL = (long) Config.getInstance().config.get("LEVEL_DIFF");
         long level = 0;
-        long current_differential =  STARTING_DIFFERENTIAL;
+        long current_differential =  Config.START_LEVEL;
         while (Math.floorDiv(xp, current_differential) != 0){
             level += 1;
             xp -= current_differential;
-            current_differential += LEVEL_DIFFERENTIAL;
+            current_differential += Config.LEVEL_DIFF;
         }
         return new long[]{level, current_differential - xp};
     }

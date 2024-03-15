@@ -35,7 +35,7 @@ public class PrivateCommands extends ListenerAdapter {
             case "send-message" : {
                 event.deferReply(true).queue();
                 try {
-                    TextChannel text_channel = Bot.getInstance().jda.getTextChannelById(Objects.requireNonNull(event.getOption("channel-id")).getAsString());
+                    TextChannel text_channel = Bot.jda.getTextChannelById(Objects.requireNonNull(event.getOption("channel-id")).getAsString());
                     String message = event.getChannel().asTextChannel().retrieveMessageById(Objects.requireNonNull(event.getOption("message-id")).getAsString()).complete().getContentRaw();
 
                     (Objects.requireNonNull(text_channel)).sendMessage(message).queue();

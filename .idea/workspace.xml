@@ -5,14 +5,32 @@
       <artifact name="latest_stubby" />
     </artifacts-to-build>
   </component>
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="02956651-25b0-4bb1-b8f4-d9af57708a1c" name="Changes" comment="changed ping version command to 1.2.6.1, the current one">
+    <list default="true" id="02956651-25b0-4bb1-b8f4-d9af57708a1c" name="Changes" comment="Major Code refactor from config singleton into static variables">
+      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Classes/Bot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Classes/Bot.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Listeners/BotReadier.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Listeners/BotReadier.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Listeners/SlashCommands/FunCommands.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Listeners/SlashCommands/FunCommands.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Listeners/SlashCommands/PrivateCommands.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Listeners/SlashCommands/PrivateCommands.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/SergeantStubby.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SergeantStubby.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+        <option value="Interface" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -20,25 +38,42 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 3
+}</component>
   <component name="ProjectId" id="2bSybU5LaLywok9eZLhafWdTi5M" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">
-    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
-    <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
-    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/latest_stubby.jar" />
-    <property name="project.structure.last.edited" value="Project" />
-    <property name="project.structure.proportion" value="0.15" />
-    <property name="project.structure.side.proportion" value="0.2" />
-  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.Stubby Run.executor": "Run",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/Finla/Documents/Stubby/SergeantStubby/src/Listeners/SlashCommands/AbstractClasses",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "vue.rearranger.settings.migration": "true"
+  },
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "sqlite"
+    ]
+  }
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Finla\Documents\Stubby\SergeantStubby\src\Listeners\SlashCommands\AbstractClasses" />
       <recent name="C:\Users\Finla\Documents\Code\StubbyBot\SergeantStubby" />
       <recent name="C:\Users\Finla\Documents\Code\StubbyBot\SergeantStubby\src" />
     </key>
@@ -80,7 +115,18 @@
       <workItem from="1706285274349" duration="1190000" />
       <workItem from="1706288050802" duration="3027000" />
       <workItem from="1706467093012" duration="954000" />
-      <workItem from="1707147809731" duration="10982000" />
+      <workItem from="1707147809731" duration="9011000" />
+      <workItem from="1707220052265" duration="217000" />
+      <workItem from="1707224342097" duration="763000" />
+      <workItem from="1707929996920" duration="1225000" />
+      <workItem from="1707932532433" duration="591000" />
+      <workItem from="1708100586378" duration="20000" />
+      <workItem from="1708101482841" duration="271000" />
+      <workItem from="1708445066649" duration="248000" />
+      <workItem from="1708534710044" duration="43000" />
+      <workItem from="1710502870414" duration="3777000" />
+      <workItem from="1710519244952" duration="1732000" />
+      <workItem from="1710521097372" duration="593000" />
     </task>
     <task id="LOCAL-00001" summary="Added all of 1.2.6 stubby to the Git">
       <created>1706223801574</created>
@@ -152,14 +198,31 @@
       <option name="project" value="LOCAL" />
       <updated>1707154184413</updated>
     </task>
-    <task id="LOCAL-00011" summary="changed ping version command to 1.2.6.1, the current one">
-      <created>1707161570842</created>
+    <task id="LOCAL-00011" summary="changed stuff">
+      <option name="closed" value="true" />
+      <created>1707220253353</created>
       <option name="number" value="00011" />
       <option name="presentableId" value="LOCAL-00011" />
       <option name="project" value="LOCAL" />
-      <updated>1707161570842</updated>
+      <updated>1707220253353</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="Code refactor">
+      <option name="closed" value="true" />
+      <created>1710519268867</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1710519268867</updated>
+    </task>
+    <task id="LOCAL-00013" summary="Major Code refactor from config singleton into static variables">
+      <option name="closed" value="true" />
+      <created>1710520977449</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1710520977449</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -185,6 +248,10 @@
     <MESSAGE value="Added DDR support for DD auto-message upon role add." />
     <MESSAGE value="bugfix with managing [DD] and [DDR] tags upon role add and removal - now works?" />
     <MESSAGE value="changed ping version command to 1.2.6.1, the current one" />
-    <option name="LAST_COMMIT_MESSAGE" value="changed ping version command to 1.2.6.1, the current one" />
+    <MESSAGE value="settings update" />
+    <MESSAGE value="changed stuff" />
+    <MESSAGE value="Code refactor" />
+    <MESSAGE value="Major Code refactor from config singleton into static variables" />
+    <option name="LAST_COMMIT_MESSAGE" value="Major Code refactor from config singleton into static variables" />
   </component>
 </project>

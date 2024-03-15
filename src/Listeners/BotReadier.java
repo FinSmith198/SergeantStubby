@@ -1,6 +1,7 @@
 package Listeners;
 
 import Classes.Bot;
+import Classes.Config;
 import net.dv8tion.jda.api.Permission;
 import net.dv8tion.jda.api.entities.Member;
 import net.dv8tion.jda.api.events.guild.GuildReadyEvent;
@@ -27,17 +28,21 @@ public class BotReadier extends ListenerAdapter {
     // log command usages
     @Override
     public void onSlashCommandInteraction(@NotNull SlashCommandInteractionEvent event) {
-        Objects.requireNonNull(Bot.getInstance().jda.getTextChannelById("821410427111866409")).sendMessage(Objects.requireNonNull(event.getMember()).getEffectiveName() +" used "+event.getCommandString()).queue();
+        // log all commands to bot spam log in test guild server
+        Objects.requireNonNull(Bot.jda.getTextChannelById("821410427111866409")).sendMessage(Objects.requireNonNull(event.getMember()).getEffectiveName() +" used "+event.getCommandString()).queue();
     }
 
     // add commands to guilds, and guild members to database
     @Override
     public void onGuildReady(@NotNull GuildReadyEvent event){
+        // for guild-specific commands
+
         System.out.println(event.getGuild().getName()+" guild ready");
         List<CommandData> commandData = new ArrayList<>();
 
+
         // only test server
-        if (event.getGuild().getId().equals("821405370014629930")){
+        if (event.getGuild().getId().equals(Config.TEST_GUILD_ID)){
             commandData.add(Commands.slash("terminate", "Stops stubby in its tracks"));
             commandData.add(Commands.slash("version", "Gives the current version of Stubby that is running"));
 
@@ -83,6 +88,8 @@ public class BotReadier extends ListenerAdapter {
     // global commands
     @Override
     public void onReady(@NotNull ReadyEvent event){
+        // for all common commands
+
         System.out.println("bot ready!");
         List<CommandData> commandData = new ArrayList<>();
 

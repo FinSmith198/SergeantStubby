@@ -33,15 +33,15 @@ public class FunCommands extends ListenerAdapter {
                 String text = Objects.requireNonNull(event.getOption("text")).getAsString();
                 switch (choice){
                     case "listening to":
-                        Bot.getInstance().jda.getPresence().setActivity(Activity.listening(text));
+                        Bot.jda.getPresence().setActivity(Activity.listening(text));
                         event.getHook().sendMessage("Set activity to: Listening to "+text).queue();
                         break;
                     case "playing":
-                        Bot.getInstance().jda.getPresence().setActivity(Activity.playing(text));
+                        Bot.jda.getPresence().setActivity(Activity.playing(text));
                         event.getHook().sendMessage("Set activity to: Playing "+text).queue();
                         break;
                     case "watching":
-                        Bot.getInstance().jda.getPresence().setActivity(Activity.watching(text));
+                        Bot.jda.getPresence().setActivity(Activity.watching(text));
                         event.getHook().sendMessage("Set activity to: Watching "+text).queue();
                         break;
                     default:
