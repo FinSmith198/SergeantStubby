@@ -44,7 +44,7 @@ public class CommunityXPController extends ListenerAdapter{
 
         String member_ID = Objects.requireNonNull(event.getMember()).getId();
         // if member's accumulator is at max capacity, do not give any xp for the message
-        if (Bot.getMemberAccumulatedXP(member_ID) >= (long) Config.getInstance().config.get("MAX_XP_PER_DAY")) return;
+        if (Bot.getMemberAccumulatedXP(member_ID) >= Config.MAX_XP_PER_DAY) return;
 
         // give xp for messages
         try {
@@ -55,8 +55,8 @@ public class CommunityXPController extends ListenerAdapter{
             long[] old_level = Bot.getMemberLevel(current_xp);
             long[] new_level;
 
-            Bot.addXPToMember(member_ID, (long) Config.getInstance().config.get("XP_PER_MESSAGE"));
-            current_xp += (long) Config.getInstance().config.get("XP_PER_MESSAGE");
+            Bot.addXPToMember(member_ID, Config.XP_PER_MESSAGE);
+            current_xp += Config.XP_PER_MESSAGE;
             new_level = Bot.getMemberLevel(current_xp);
 
             if (new_level[0] == old_level[0]) return;
@@ -90,7 +90,7 @@ public class CommunityXPController extends ListenerAdapter{
                     long[] level_info = Bot.getMemberLevel(Bot.getMemberXP(Objects.requireNonNull(event.getMember()).getId()));
                     eb.setTitle(String.format("You are Currently **Level %s**", level_info[0]));
                     eb.setDescription(String.format("Hey %s, you are only _%s xp_ away from Level %s!", event.getMember().getEffectiveName(), level_info[1], level_info[0]+1));
-                    eb.addField("How Do I Get More XP?", "To get more xp, just send some messages, or even some images, over in the _Community_ category of our discord, such as Media! (You are Limited to "+ Config.getInstance().config.get("MAX_XP_PER_DAY") +" xp per day)", false);
+                    eb.addField("How Do I Get More XP?", "To get more xp, just send some messages, or even some images, over in the _Community_ category of our discord, such as Media! (You are Limited to "+ Config.MAX_XP_PER_DAY +" xp per day)", false);
                 }
                 eb.setColor(Color.orange);
                 eb.setFooter("-Sgt. Stubby");

@@ -193,13 +193,13 @@ public class HLListener extends ListenerAdapter {
     @Override
     public void onReady(@NotNull ReadyEvent event){
 
-        final long delay = (Long) Config.getInstance().config.get("HLL_STATS_UPDATE_DELAY");
+        final long delay = Config.HLL_STATS_UPDATE_DELAY;
 
 
-        seedingChannel = event.getJDA().getTextChannelById((String) Config.getInstance().config.get("HLL_STATS_DISCORD_CHANNEL"));
+        seedingChannel = event.getJDA().getTextChannelById(Config.HLL_STATS_DISCORD_CHANNEL);
         seedEmbedBuilder.setTitle("Top 50 Seeders (Hours Seeded):");
         seedEmbedBuilder.setColor(Color.GREEN);
-        seedEmbedBuilder.setDescription(String.format((String) (Config.getInstance().config.get("SEEDING_MESSAGE_DESCRIPTION")), delay));
+        seedEmbedBuilder.setDescription(String.format(Config.SEEDING_MESSAGE_DESCRIPTION, delay));
         seedEmbedBuilder.setFooter("-Sgt. Stubby");
 
         try {
@@ -358,10 +358,10 @@ public class HLListener extends ListenerAdapter {
 
     private JSONObject sendRequest(String function){
         try {
-            URL url = new URL(Config.getInstance().config.get("HLL_SERVER_STATS_URL") + function);
+            URL url = new URL(Config.HLL_SERVER_STATS_URL + function);
             HttpURLConnection con = (HttpURLConnection) url.openConnection();
 
-            con.setRequestProperty("Authorization","bearer: "+ Config.getInstance().config.get("RCON_KEY"));
+            con.setRequestProperty("Authorization","bearer: "+ Config.RCON_KEY);
             con.setRequestMethod("GET");
 
             InputStream inputStream = con.getInputStream();
@@ -381,10 +381,10 @@ public class HLListener extends ListenerAdapter {
     // same as sendRequest, but includes parameters
     private JSONObject sendRequest(String function, String parameter_data) {
         try {
-            URL url = new URL(Config.getInstance().config.get("HLL_SERVER_STATS_URL") + function);
+            URL url = new URL(Config.HLL_SERVER_STATS_URL + function);
             HttpURLConnection connection = (HttpURLConnection) url.openConnection();
 
-            connection.setRequestProperty("Authorization","bearer: "+ Config.getInstance().config.get("RCON_KEY"));
+            connection.setRequestProperty("Authorization","bearer: "+ Config.RCON_KEY);
             connection.setRequestMethod("GET");
             connection.setDoOutput(true);
 
@@ -407,7 +407,7 @@ public class HLListener extends ListenerAdapter {
     }
 
 
-    private double round (double value, int precision) {
+    private double round(double value, int precision) {
         int scale = (int) Math.pow(10, precision);
         return (double) Math.round(value * scale) / scale;
     }

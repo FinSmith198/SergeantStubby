@@ -1,6 +1,7 @@
 package Listeners;
 
 import Classes.Bot;
+import Classes.Config;
 import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.entities.Member;
 import net.dv8tion.jda.api.entities.Role;
@@ -52,7 +53,7 @@ public class WelcomeMessageListener extends ListenerAdapter {
     public void onGuildMemberRoleAdd(@NotNull GuildMemberRoleAddEvent event){
         String com_role_id = "1001465266926014505";
         String rep_role_id = "1001465501563752593";
-        if (event.getGuild().getId().equals("821405370014629930")){
+        if (event.getGuild().getId().equals(Config.TEST_GUILD_ID)){
             com_role_id = "1138451798336733204";
             rep_role_id = "1138451857652584448";
         }

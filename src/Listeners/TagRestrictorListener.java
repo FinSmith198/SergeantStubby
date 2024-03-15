@@ -36,9 +36,9 @@ public class TagRestrictorListener extends ListenerAdapter {
     private ScheduledFuture<?> DDR_handle;
     private final ScheduledExecutorService DD_executor = Executors.newScheduledThreadPool(1);
     private final ScheduledExecutorService DDR_executor = Executors.newScheduledThreadPool(1);
-    private List<String> new_DD_members = new ArrayList<>();
-    private List<String> new_DDR_members = new ArrayList<>();
-    StringBuilder promotion_message;
+    private final List<String> new_DD_members = new ArrayList<>();
+    private final List<String> new_DDR_members = new ArrayList<>();
+    private StringBuilder promotion_message;
 
 
     @Override

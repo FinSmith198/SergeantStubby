@@ -25,7 +25,7 @@ public class MemberCounter extends ListenerAdapter {
 
     @Override
     public void onGuildReady(GuildReadyEvent event) {
-        if (!event.getGuild().getId().equals("1001456689851146331"))
+        if (!event.getGuild().getId().equals(Config.DD_GUILD_ID))
             return;
 
         countedRoles.add(event.getJDA().getRoleById(1126070633382555658L));
@@ -50,7 +50,7 @@ public class MemberCounter extends ListenerAdapter {
 
     @Override
     public void onGuildMemberRoleAdd(GuildMemberRoleAddEvent event) {
-        if (!event.getGuild().getId().equals("1001456689851146331"))
+        if (!event.getGuild().getId().equals(Config.DD_GUILD_ID))
             return;
         for (Role role : event.getRoles()){
             if (!countedRoles.contains(role))
@@ -62,7 +62,7 @@ public class MemberCounter extends ListenerAdapter {
 
     @Override
     public void onGuildMemberRoleRemove(GuildMemberRoleRemoveEvent event) {
-        if (!event.getGuild().getId().equals("1001456689851146331"))
+        if (!event.getGuild().getId().equals(Config.DD_GUILD_ID))
             return;
         for (Role role : event.getRoles()){
             if (!countedRoles.contains(role))
@@ -74,7 +74,7 @@ public class MemberCounter extends ListenerAdapter {
 
     @Override
     public void onGuildMemberJoin(GuildMemberJoinEvent event) {
-        if (!event.getGuild().getId().equals("1001456689851146331"))
+        if (!event.getGuild().getId().equals(Config.DD_GUILD_ID))
             return;
         roleCounts[roleCounts.length-1]++;
         updateTotalMemberCount();
@@ -82,7 +82,7 @@ public class MemberCounter extends ListenerAdapter {
 
     @Override
     public void onGuildMemberRemove(GuildMemberRemoveEvent event) {
-        if (!event.getGuild().getId().equals("1001456689851146331"))
+        if (!event.getGuild().getId().equals(Config.DD_GUILD_ID))
             return;
         roleCounts[roleCounts.length-1]--;
         updateTotalMemberCount();
