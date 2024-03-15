@@ -8,6 +8,7 @@ import java.sql.SQLException;
 
 public class Config {
     private static Config config_instance = null;
+    public static final String TEST_GUILD_ID = "821405370014629930";
     public JSONObject config;
 
     private Config(String filePath){
