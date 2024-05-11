@@ -31,8 +31,8 @@ public class HLListener extends ListenerAdapter {
 
     private final ScheduledExecutorService statScheduler = Executors.newScheduledThreadPool(1);
     private TextChannel seedingChannel;
-    private EmbedBuilder seedEmbedBuilder = new EmbedBuilder();
-    private String leaderboard_ID;
+    private final EmbedBuilder seedEmbedBuilder = new EmbedBuilder();
+    private long leaderboard_ID = 0;
 
     private JSONArray playerStats;
     private JSONArray oldPlayerStats = new JSONArray();
@@ -206,12 +206,12 @@ public class HLListener extends ListenerAdapter {
             MessageHistory history = MessageHistory.getHistoryFromBeginning(seedingChannel).complete();
             List<Message> mess = history.getRetrievedHistory();
             for (Message message : mess){
-                if (message != null && message.getAuthor().isBot()){
-                    leaderboard_ID = message.getId();
+                if (message != null && message.getAuthor().getIdLong() == Config.STUBBY_DISCORD_USERID){
+                    leaderboard_ID = message.getIdLong();
                     break;
                 }
             }
-            if (leaderboard_ID == null)
+            if (leaderboard_ID == 0)
                 throw new Exception ("No Leaderboard Found");
         } catch (Exception e){
             seedingChannel.sendMessageEmbeds(seedEmbedBuilder.build()).queue();
@@ -222,7 +222,7 @@ public class HLListener extends ListenerAdapter {
     }
 
     private void updateStatsMessage() {
-        if (leaderboard_ID == null) leaderboard_ID = seedingChannel.getLatestMessageId();
+        if (leaderboard_ID == 0) leaderboard_ID = seedingChannel.getLatestMessageIdLong();
 
 
         seedEmbedBuilder.clearFields();
@@ -284,7 +284,7 @@ public class HLListener extends ListenerAdapter {
                         // only true if server is up, but with nobody on it, or server is down. so, there's no point doing rest of the function
                         if (playerStats.isEmpty()) {
                             oldPlayerStats = new JSONArray();
-                            return;
+//                            return;
                         }
 
                         List<String> oldIDs = new ArrayList<>();

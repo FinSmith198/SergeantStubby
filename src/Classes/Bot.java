@@ -149,5 +149,14 @@ public class Bot {
         return new long[]{level, current_differential - xp};
     }
 
+    public static void pauseRuntime(long millis) {
+        synchronized (Runtime.getRuntime()){
+            try {
+                Runtime.getRuntime().wait(millis);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+    }
 
 }

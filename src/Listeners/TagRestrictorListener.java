@@ -146,7 +146,6 @@ public class TagRestrictorListener extends ListenerAdapter {
                 updateDDRHandle(event.getGuild());
                 return;
             }
-
         }
     }
 
@@ -200,11 +199,12 @@ public class TagRestrictorListener extends ListenerAdapter {
             DD_handle.cancel(false);
         } catch (NullPointerException ignored){}
 
+
         DD_handle = DD_executor.schedule(() ->{
                     if (new_DD_members.isEmpty()) return;
 
                     String[] emojis = new String[]{"<:Dog:1010471609305419796>", "<:HLLSalute:1012735244597743636>", "<:DDMaj:1022809742638338058>"};
-                    // Bot Testing Server
+                    // Bot Testing Server emojis
                     if (guild.getId().equals("821405370014629930")) emojis = new String[]{"<:Dog:1121032301522997299>", "<:HLLSalute:1121032288436768930>", "<:DDMaj:1121032268291510303>"};
 
                     if (new_DD_members.size() == 1){
@@ -221,13 +221,18 @@ public class TagRestrictorListener extends ListenerAdapter {
                     }
                     new_DD_members.clear();
                     Objects.requireNonNull(guild.getTextChannelById(DDGeneral)).sendMessage(promotion_message.toString()).queue();
+
+                    System.out.println("dd handle has been handled");
                 }
                 , 30, TimeUnit.SECONDS);
     }
+
     public void updateDDRHandle(@NotNull Guild guild){
         try {
             DDR_handle.cancel(false);
         } catch (NullPointerException ignored){}
+
+        System.out.println("ddr handle being handled");
 
         DDR_handle = DDR_executor.schedule(() ->{
                     if (new_DDR_members.isEmpty()) return;
@@ -250,6 +255,8 @@ public class TagRestrictorListener extends ListenerAdapter {
                     }
                     new_DDR_members.clear();
                     Objects.requireNonNull(guild.getTextChannelById(DDGeneral)).sendMessage(promotion_message.toString()).queue();
+
+                    System.out.println("ddr handle has been handled");
                 }
                 , 30, TimeUnit.SECONDS);
     }

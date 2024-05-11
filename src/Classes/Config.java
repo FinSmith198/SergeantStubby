@@ -12,7 +12,7 @@ public class Config {
     public static final String TEST_GUILD_ID = "821405370014629930";
     public static final String DD_GUILD_ID = "1001456689851146331";
     
-    // constants
+    // constants - which coincidentally are not constant
     public static String RCON_KEY;
     public static String DISCORD_TOKEN;
     public static String HLL_SERVER_RCON_URL;
@@ -24,6 +24,7 @@ public class Config {
     public static Long MAX_XP_PER_DAY;
     public static Long START_LEVEL;
     public static Long LEVEL_DIFF;
+    public static Long STUBBY_DISCORD_USERID = 1120989978994937897L;
 
 
     public static void init(String filePath){
