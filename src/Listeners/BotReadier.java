@@ -81,7 +81,7 @@ public class BotReadier extends ListenerAdapter {
             Bot.addMembersToDatabase(missing_members);
 
         } catch (ClassNotFoundException | SQLException e) {
-            e.printStackTrace();
+            Bot.sendErrorMessage(e);
         }
     }
 

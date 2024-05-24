@@ -1,5 +1,6 @@
 package Listeners;
 
+import Classes.Bot;
 import Classes.Config;
 import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.entities.Message;
@@ -244,7 +245,7 @@ public class HLListener extends ListenerAdapter {
             }
             c.close();
         } catch (SQLException | ClassNotFoundException e) {
-            e.printStackTrace();
+            Bot.sendErrorMessage(e);
             return;
         }
 
@@ -329,7 +330,7 @@ public class HLListener extends ListenerAdapter {
                                     try {
                                         c.createStatement().execute("UPDATE SteamPlayers SET (username) = ('" + formatted_name + "') WHERE STEAM_ID = " + player_stat.get("steam_id_64") + ";");
                                     } catch (SQLException o){
-                                        System.out.println(o.getMessage());
+                                        Bot.sendErrorMessage(e);
                                     }
                                 }
                             }
@@ -340,7 +341,7 @@ public class HLListener extends ListenerAdapter {
                         oldPlayerStats = playerStats;
 
                     } catch (Exception e){
-                        e.printStackTrace();
+                        Bot.sendErrorMessage(e);
                     }
 
 
@@ -372,7 +373,7 @@ public class HLListener extends ListenerAdapter {
         } catch (IOException ignored) {
 
         } catch (ParseException e){
-            System.out.println(e.getMessage());
+            Bot.sendErrorMessage(e);
         }
         return null;
     }
@@ -401,7 +402,7 @@ public class HLListener extends ListenerAdapter {
         } catch (IOException ignored) {
 
         } catch (ParseException e){
-            System.out.println(e.getMessage());
+            Bot.sendErrorMessage(e);
         }
         return null;
     }

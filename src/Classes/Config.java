@@ -25,6 +25,7 @@ public class Config {
     public static Long START_LEVEL;
     public static Long LEVEL_DIFF;
     public static Long STUBBY_DISCORD_USERID = 1120989978994937897L;
+    public static Long ERROR_MESSAGE_CHANNEL;
 
 
     public static void init(String filePath){
@@ -35,22 +36,23 @@ public class Config {
 
             ResultSet resultSet = databaseConnection.createStatement().executeQuery("SELECT * FROM Config INNER JOIN BotData ON (BotData.SNAPSHOT = Config.SNAPSHOT);");
             while (resultSet.next()){
-                RCON_KEY = resultSet.getString(2);
-                HLL_SERVER_RCON_URL = resultSet.getString(3);
-                HLL_SERVER_STATS_URL = resultSet.getString(4);
-                SEEDING_MESSAGE_DESCRIPTION = resultSet.getString(5).replaceAll("\\\\n", "\n");
-                HLL_STATS_UPDATE_DELAY = resultSet.getLong(6);
-                XP_PER_MESSAGE = resultSet.getLong(7);
-                MAX_XP_PER_DAY = resultSet.getLong(8);
-                START_LEVEL = resultSet.getLong(9);
-                LEVEL_DIFF = resultSet.getLong(10);
-                DISCORD_TOKEN = resultSet.getString(12);
-                HLL_STATS_DISCORD_CHANNEL = resultSet.getString(13);
+                RCON_KEY = resultSet.getString("rcon_key");
+                HLL_SERVER_RCON_URL = resultSet.getString("hll_rcon_url");
+                HLL_SERVER_STATS_URL = resultSet.getString("hll_stats_url");
+                SEEDING_MESSAGE_DESCRIPTION = resultSet.getString("seeding_message_description").replaceAll("\\\\n", "\n");
+                HLL_STATS_UPDATE_DELAY = resultSet.getLong("hll_stats_update_delay");
+                XP_PER_MESSAGE = resultSet.getLong("xp_per_message");
+                MAX_XP_PER_DAY = resultSet.getLong("max_xp_per_day");
+                START_LEVEL = resultSet.getLong("xp_start_level");
+                LEVEL_DIFF = resultSet.getLong("xp_level_diff");
+                DISCORD_TOKEN = resultSet.getString("TOKEN");
+                HLL_STATS_DISCORD_CHANNEL = resultSet.getString("seeding_stats_text_channel");
+                ERROR_MESSAGE_CHANNEL = resultSet.getLong("error_message_channel");
             }
             databaseConnection.close();
 
         } catch (ClassNotFoundException | SQLException e) {
-            e.fillInStackTrace();
+            Bot.sendErrorMessage(e);
         }
     }
 }

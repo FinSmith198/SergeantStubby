@@ -55,18 +55,12 @@ public class AdminCommands extends ListenerAdapter {
                     Connection c = DriverManager.getConnection("jdbc:sqlite:DDServerData.db");
                     c.createStatement().execute("UPDATE SteamPlayers SET time_seeded = 0;");
                 } catch (Exception e) {
-                    e.printStackTrace();
+                    Bot.sendErrorMessage(e);
                     response = "Leaderboard was not reset.\n" + e.getMessage();
                 }
                 event.getHook().sendMessage(response).queue();
 
                 break;
         }
-
-
-
-
     }
-
-
 }

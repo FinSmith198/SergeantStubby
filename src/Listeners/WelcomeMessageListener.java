@@ -37,7 +37,7 @@ public class WelcomeMessageListener extends ListenerAdapter {
             Consumer<PrivateChannel> messageSender = channel -> channel.sendMessageEmbeds(eb.build()).queue();
             member.getUser().openPrivateChannel().queue(messageSender);
         } catch (Exception e){
-            System.out.println("Could not send message to " + member.getUser().getName());
+            Bot.sendErrorMessage(new Exception("Could not send private message to " + member.getUser().getName()));
         }
 
 
@@ -45,7 +45,7 @@ public class WelcomeMessageListener extends ListenerAdapter {
         try {
             Bot.addMemberToDatabase(event.getMember());
         } catch (SQLException | ClassNotFoundException e) {
-            e.printStackTrace();
+            Bot.sendErrorMessage(e);
         }
     }
 
@@ -90,10 +90,8 @@ public class WelcomeMessageListener extends ListenerAdapter {
             Consumer<PrivateChannel> messageSender = channel -> channel.sendMessageEmbeds(eb.build()).queue();
             member.getUser().openPrivateChannel().queue(messageSender);
         } catch (Exception e){
-            System.out.println("Could not send private message to " + member.getUser().getName());
+            Bot.sendErrorMessage(new Exception("Could not send private message to " + member.getUser().getName()));
         }
-
-
     }
 
     @Override
@@ -101,6 +99,7 @@ public class WelcomeMessageListener extends ListenerAdapter {
         String message = event.getMessage().getContentRaw();
         if (message.equalsIgnoreCase("hello stubby")){
             event.getChannel().sendMessage("Hi!").queue();
+            Bot.sendErrorMessage(new Exception("test lol"));
         }
     }
 }

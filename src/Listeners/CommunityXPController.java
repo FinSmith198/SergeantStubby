@@ -71,7 +71,7 @@ public class CommunityXPController extends ListenerAdapter{
 
 
         } catch (ClassNotFoundException | SQLException e) {
-            e.printStackTrace();
+            Bot.sendErrorMessage(e);
         }
     }
 
@@ -98,7 +98,7 @@ public class CommunityXPController extends ListenerAdapter{
                 event.getHook().sendMessageEmbeds(eb.build()).queue();
 
             } catch (ClassNotFoundException | SQLException e) {
-                e.printStackTrace();
+                Bot.sendErrorMessage(e);
             }
         }
 
@@ -110,7 +110,7 @@ public class CommunityXPController extends ListenerAdapter{
                 Bot.setMemberLevelling(member_id, choice);
                 event.getHook().sendMessage("Member "+ Objects.requireNonNull(Objects.requireNonNull(event.getOption("member")).getAsMember()).getEffectiveName()+" now has levelling set to "+choice).queue();
             } catch (ClassNotFoundException | SQLException e) {
-                e.printStackTrace();
+                Bot.sendErrorMessage(e);
             }
         }
     }
@@ -140,7 +140,7 @@ public class CommunityXPController extends ListenerAdapter{
                         c.createStatement().execute("UPDATE Members SET XP = XP + XP_accumulator, XP_accumulator = 0 WHERE XP_accumulator != 0;");
                         c.close();
                     } catch (SQLException | ClassNotFoundException e) {
-                        e.printStackTrace();
+                        Bot.sendErrorMessage(e);
                     }
 
                 },

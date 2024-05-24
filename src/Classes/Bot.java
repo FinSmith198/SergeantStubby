@@ -4,17 +4,21 @@ import Listeners.SlashCommands.AdminCommands;
 import Listeners.SlashCommands.FunCommands;
 import Listeners.*;
 import Listeners.SlashCommands.PrivateCommands;
+import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.JDABuilder;
 import net.dv8tion.jda.api.entities.Member;
 import net.dv8tion.jda.api.requests.GatewayIntent;
 import net.dv8tion.jda.api.utils.MemberCachePolicy;
 
+import java.io.PrintWriter;
+import java.io.StringWriter;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
+import java.util.Objects;
 
 public class Bot {
     private static final TagRestrictorListener dog_tag_restrictor = new TagRestrictorListener();
@@ -132,7 +136,7 @@ public class Bot {
             c.close();
             return XP;
         } catch (SQLException | ClassNotFoundException e) {
-            e.printStackTrace();
+            sendErrorMessage(e);
         }
         return 0;
     }
@@ -149,12 +153,30 @@ public class Bot {
         return new long[]{level, current_differential - xp};
     }
 
+    public static void sendErrorMessage(Exception e) {
+        if (jda == null || !jda.getStatus().equals(JDA.Status.CONNECTED) || Config.ERROR_MESSAGE_CHANNEL == null) {
+            e.printStackTrace();
+            return;
+        }
+
+        StringBuilder message = new StringBuilder();
+        message.append("## ");
+
+        StringWriter sw = new StringWriter();
+        PrintWriter pw = new PrintWriter(sw);
+        e.printStackTrace(pw);
+        message.append(sw);
+
+
+        Objects.requireNonNull(jda.getTextChannelById(Config.ERROR_MESSAGE_CHANNEL)).sendMessage(message.toString()).queue();
+    }
+
     public static void pauseRuntime(long millis) {
         synchronized (Runtime.getRuntime()){
             try {
                 Runtime.getRuntime().wait(millis);
             } catch (InterruptedException e) {
-                e.printStackTrace();
+                sendErrorMessage(e);
             }
         }
     }

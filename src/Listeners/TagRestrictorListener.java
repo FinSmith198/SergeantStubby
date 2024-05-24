@@ -86,10 +86,8 @@ public class TagRestrictorListener extends ListenerAdapter {
                 event.getUser().openPrivateChannel().queue(messageSender);
             }
         } catch (Exception e){
-            System.out.println("Could not send message to " + event.getUser().getName());
+            Bot.sendErrorMessage(new Exception("Could not send message to " + event.getUser().getName()));
         }
-
-
     }
 
     @Override
@@ -222,7 +220,6 @@ public class TagRestrictorListener extends ListenerAdapter {
                     new_DD_members.clear();
                     Objects.requireNonNull(guild.getTextChannelById(DDGeneral)).sendMessage(promotion_message.toString()).queue();
 
-                    System.out.println("dd handle has been handled");
                 }
                 , 30, TimeUnit.SECONDS);
     }
@@ -256,8 +253,7 @@ public class TagRestrictorListener extends ListenerAdapter {
                     new_DDR_members.clear();
                     Objects.requireNonNull(guild.getTextChannelById(DDGeneral)).sendMessage(promotion_message.toString()).queue();
 
-                    System.out.println("ddr handle has been handled");
-                }
+                    }
                 , 30, TimeUnit.SECONDS);
     }
 
