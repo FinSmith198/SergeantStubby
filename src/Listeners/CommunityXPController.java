@@ -16,7 +16,10 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.Duration;
 import java.time.ZoneId;
+import java.time.ZoneOffset;
 import java.time.ZonedDateTime;
+import java.time.temporal.Temporal;
+import java.time.temporal.TemporalAccessor;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -122,7 +125,7 @@ public class CommunityXPController extends ListenerAdapter{
     public void onReady(@NotNull ReadyEvent event){
 
         // sets the time to restart a flush to be 1am every day
-        ZonedDateTime now = ZonedDateTime.now(ZoneId.systemDefault());
+        ZonedDateTime now = ZonedDateTime.now(ZoneId.ofOffset("UTC", ZoneOffset.UTC));
         ZonedDateTime nextAccumulatorFlush = now.withHour(1).withMinute(0).withSecond(0);
 
         // if current day's time is already past 1am, set time to the next day

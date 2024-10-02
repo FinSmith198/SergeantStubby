@@ -40,7 +40,7 @@ public class TagRestrictorListener extends ListenerAdapter {
     private final List<String> new_DDR_members = new ArrayList<>();
     private StringBuilder promotion_message;
 
-
+/*
     @Override
     public void onGuildMemberUpdateNickname(@NotNull GuildMemberUpdateNicknameEvent event){
 
@@ -89,6 +89,7 @@ public class TagRestrictorListener extends ListenerAdapter {
             Bot.sendErrorMessage(new Exception("Could not send message to " + event.getUser().getName()));
         }
     }
+*/
 
     @Override
     public void onGuildMemberRoleAdd(@NotNull GuildMemberRoleAddEvent event){
@@ -112,13 +113,13 @@ public class TagRestrictorListener extends ListenerAdapter {
 
                 // member -> DD (no message)
                 if (!member.getRoles().contains(event.getGuild().getRoleById(DDRroleID))) {
-                    changeNickName(member, " [DD]");
+                    changeNickName(member, "[DD] ");
                     continue;
                 }
 
                 // DDR -> DD (send message):
                 event.getGuild().removeRoleFromMember(member.getUser(), Objects.requireNonNull(event.getGuild().getRoleById(DDRroleID))).queue();
-                changeNickName(member, " [DD]");
+//                changeNickName(member, "[DD] ");
 
                 // promotion message
                 if (!Bot.getPromotionMessageStatus()) return;
@@ -129,7 +130,7 @@ public class TagRestrictorListener extends ListenerAdapter {
             }
             // new DDR role:
             else if (role.getId().equals(DDRroleID)) {
-                changeNickName(member, " [DDR]");
+                changeNickName(member, "[DDR] ");
 
                 // but already a DD Member (no message)
                 if (member.getRoles().contains(event.getGuild().getRoleById(DDroleID)))
@@ -162,12 +163,13 @@ public class TagRestrictorListener extends ListenerAdapter {
 
 
         for (Role role : roles){
-            if (role.getId().equals(DDroleID)){
-                new_DD_members.remove(member.getId());
-                changeNickName(member, "[DD]", "");
+            if (role.getId().equals(DDRroleID)){
+                new_DDR_members.remove(member.getId());
+                changeNickName(member, "[DDR] ", "");
                 break;
-            } else if (role.getId().equals(DDRroleID)){
-                changeNickName(member, "[DDR]", "");
+            } else if (role.getId().equals(DDroleID)) {
+                new_DD_members.remove(member.getId());
+                changeNickName(member, "[DD] ", "");
                 break;
             }
         }
@@ -175,19 +177,19 @@ public class TagRestrictorListener extends ListenerAdapter {
 
     public void changeNickName(Member member, String addition){
         try {
-            member.modifyNickname(member.getEffectiveName() + addition).queue();
+            member.modifyNickname(addition + member.getNickname()).queue();
         } catch (HierarchyException | NullPointerException ignored){}
     }
 
     public void changeNickName(Member member, String target, String replacement){
         try {
-            member.modifyNickname(member.getEffectiveName().replace(target, replacement).strip()).queue();
+            member.modifyNickname(Objects.requireNonNull(member.getNickname()).replace(target, replacement).strip()).queue();
         } catch (HierarchyException | NullPointerException ignored){}
     }
 
     public void changeNickNameRegex(Member member, String regex, String replacement){
         try {
-            member.modifyNickname(member.getEffectiveName().replaceAll(regex, replacement).strip()).queue();
+            member.modifyNickname(Objects.requireNonNull(member.getNickname()).replaceAll(regex, replacement).strip()).queue();
         } catch (HierarchyException | NullPointerException ignored){}
     }
 
@@ -200,6 +202,13 @@ public class TagRestrictorListener extends ListenerAdapter {
 
         DD_handle = DD_executor.schedule(() ->{
                     if (new_DD_members.isEmpty()) return;
+
+                    for (String memberID : new_DD_members) {
+                        Member member = guild.getMemberById(memberID);
+                        changeNickNameRegex(member, "\\[DDR]", "");
+                        changeNickNameRegex(member, "(\\[DD] )+", "");
+                        changeNickName(member, "[DD] ");
+                    }
 
                     String[] emojis = new String[]{"<:Dog:1010471609305419796>", "<:HLLSalute:1012735244597743636>", "<:DDMaj:1022809742638338058>"};
                     // Bot Testing Server emojis
@@ -229,7 +238,6 @@ public class TagRestrictorListener extends ListenerAdapter {
             DDR_handle.cancel(false);
         } catch (NullPointerException ignored){}
 
-        System.out.println("ddr handle being handled");
 
         DDR_handle = DDR_executor.schedule(() ->{
                     if (new_DDR_members.isEmpty()) return;

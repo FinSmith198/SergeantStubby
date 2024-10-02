@@ -1,9 +1,9 @@
 package Classes;
 
-import Listeners.SlashCommands.AdminCommands;
-import Listeners.SlashCommands.FunCommands;
+import Listeners.NonSpecificSlashCommands.AdminCommands;
+import Listeners.NonSpecificSlashCommands.FunCommands;
 import Listeners.*;
-import Listeners.SlashCommands.PrivateCommands;
+import Listeners.NonSpecificSlashCommands.PrivateCommands;
 import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.JDABuilder;

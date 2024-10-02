@@ -1,7 +1,6 @@
-package Listeners.SlashCommands;
+package Listeners.NonSpecificSlashCommands;
 
 import Classes.Bot;
-import net.dv8tion.jda.api.entities.Message;
 import net.dv8tion.jda.api.entities.channel.concrete.TextChannel;
 import net.dv8tion.jda.api.events.interaction.command.SlashCommandInteractionEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
@@ -23,7 +22,7 @@ public class PrivateCommands extends ListenerAdapter {
         switch (command) {
             case "version" : {
                 event.deferReply(true).queue();
-                event.getHook().sendMessage("Current version is v1.2.6.1").queue();
+                event.getHook().sendMessage("Current version is v1.2.6.2").queue();
                 break;
             }
             case "terminate" : {
