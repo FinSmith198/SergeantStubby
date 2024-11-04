@@ -27,6 +27,7 @@ public class Config {
     public static Long STUBBY_DISCORD_USERID = 1120989978994937897L;
     public static Long ERROR_MESSAGE_CHANNEL;
     public static String APPLICATION_TICKET_LOGGING_CHANNEL;
+    public static String APPLICATION_RECRUIT_GOOGLE_FORM_URL;
 
 
     public static void init(String filePath){
@@ -50,6 +51,7 @@ public class Config {
                 HLL_STATS_DISCORD_CHANNEL = resultSet.getString("seeding_stats_text_channel");
                 ERROR_MESSAGE_CHANNEL = resultSet.getLong("error_message_channel");
                 APPLICATION_TICKET_LOGGING_CHANNEL = resultSet.getString("application_ticket_log_channel");
+                APPLICATION_RECRUIT_GOOGLE_FORM_URL = resultSet.getString("application_recruit_google_form_url");
             }
             databaseConnection.close();
 
