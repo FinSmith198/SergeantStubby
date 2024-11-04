@@ -9,15 +9,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="02956651-25b0-4bb1-b8f4-d9af57708a1c" name="Changes" comment="changed ping version command to 1.2.6.1, the current one">
+    <list default="true" id="02956651-25b0-4bb1-b8f4-d9af57708a1c" name="Changes" comment="1.2.6.2 Made [DD] in front of name, and more robust name changing, due to errors when DDR-&gt;DD.">
+      <change afterPath="$PROJECT_DIR$/src/Listeners/RecruitmentTicketController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Classes/Bot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Classes/Bot.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Listeners/BotReadier.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Listeners/BotReadier.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Listeners/CommunityXPController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Listeners/CommunityXPController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Listeners/SlashCommands/AdminCommands.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Listeners/NonSpecificSlashCommands/AdminCommands.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Listeners/SlashCommands/FunCommands.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Listeners/NonSpecificSlashCommands/FunCommands.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Listeners/SlashCommands/PrivateCommands.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Listeners/NonSpecificSlashCommands/PrivateCommands.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Listeners/TagRestrictorListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Listeners/TagRestrictorListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Classes/Config.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Classes/Config.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Test.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Test.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -50,21 +45,22 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.Stubby Run.executor": "Run",
-    "kotlin-language-version-configured": "true",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.Stubby Run.executor&quot;: &quot;Run&quot;,
+    &quot;Application.Test.executor&quot;: &quot;Run&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\Finla\Documents\Code\StubbyBot\SergeantStubby" />
@@ -119,7 +115,12 @@
       <workItem from="1707147809731" duration="10982000" />
       <workItem from="1710765641034" duration="97000" />
       <workItem from="1715462960434" duration="392000" />
-      <workItem from="1727863573866" duration="2978000" />
+      <workItem from="1727863573866" duration="3583000" />
+      <workItem from="1727878315976" duration="1286000" />
+      <workItem from="1727881756058" duration="620000" />
+      <workItem from="1728330519789" duration="1506000" />
+      <workItem from="1728680589795" duration="106000" />
+      <workItem from="1730718222005" duration="3747000" />
     </task>
     <task id="LOCAL-00001" summary="Added all of 1.2.6 stubby to the Git">
       <created>1706223801574</created>
@@ -198,7 +199,15 @@
       <option name="project" value="LOCAL" />
       <updated>1707161570842</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="1.2.6.2 Made [DD] in front of name, and more robust name changing, due to errors when DDR-&gt;DD.">
+      <option name="closed" value="true" />
+      <created>1727866691295</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1727866691295</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -224,6 +233,7 @@
     <MESSAGE value="Added DDR support for DD auto-message upon role add." />
     <MESSAGE value="bugfix with managing [DD] and [DDR] tags upon role add and removal - now works?" />
     <MESSAGE value="changed ping version command to 1.2.6.1, the current one" />
-    <option name="LAST_COMMIT_MESSAGE" value="changed ping version command to 1.2.6.1, the current one" />
+    <MESSAGE value="1.2.6.2 Made [DD] in front of name, and more robust name changing, due to errors when DDR-&gt;DD." />
+    <option name="LAST_COMMIT_MESSAGE" value="1.2.6.2 Made [DD] in front of name, and more robust name changing, due to errors when DDR-&gt;DD." />
   </component>
 </project>

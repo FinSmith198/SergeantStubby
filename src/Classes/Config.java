@@ -26,6 +26,7 @@ public class Config {
     public static Long LEVEL_DIFF;
     public static Long STUBBY_DISCORD_USERID = 1120989978994937897L;
     public static Long ERROR_MESSAGE_CHANNEL;
+    public static String APPLICATION_TICKET_LOGGING_CHANNEL;
 
 
     public static void init(String filePath){
@@ -48,6 +49,7 @@ public class Config {
                 DISCORD_TOKEN = resultSet.getString("TOKEN");
                 HLL_STATS_DISCORD_CHANNEL = resultSet.getString("seeding_stats_text_channel");
                 ERROR_MESSAGE_CHANNEL = resultSet.getLong("error_message_channel");
+                APPLICATION_TICKET_LOGGING_CHANNEL = resultSet.getString("application_ticket_log_channel");
             }
             databaseConnection.close();
 
