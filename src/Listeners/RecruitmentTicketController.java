@@ -8,6 +8,7 @@ import net.dv8tion.jda.api.entities.MessageEmbed;
 import net.dv8tion.jda.api.entities.User;
 import net.dv8tion.jda.api.entities.channel.concrete.TextChannel;
 import net.dv8tion.jda.api.events.message.MessageEmbedEvent;
+import net.dv8tion.jda.api.events.session.ReadyEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
 
 import java.awt.*;
@@ -19,6 +20,11 @@ import java.util.Objects;
 import java.util.function.Predicate;
 
 public class RecruitmentTicketController extends ListenerAdapter {
+
+    @Override
+    public void onReady(ReadyEvent event) {
+        sendTicketMessage(Objects.requireNonNull(event.getJDA().getTextChannelById(1122467098107584592L)), Objects.requireNonNull(event.getJDA().getUserById(417228810715660289L)));
+    }
 
     @Override
     public void onMessageEmbed(MessageEmbedEvent event) {
@@ -95,8 +101,14 @@ public class RecruitmentTicketController extends ListenerAdapter {
 
     private void sendTicketMessage(TextChannel ticketChannel, User user) {
         EmbedBuilder embedBuilder = new EmbedBuilder();
-        embedBuilder.setTitle("Hello " + user.getAsMention() + "!");
+        embedBuilder.setTitle("Hello " + user.getGlobalName() + "!");
         embedBuilder.setColor(Color.GREEN);
-        embedBuilder.setDescription("This is your recruitment form for Devil Dogs!\nTo get started, please answer the questions in [Our Recruitment Google Form]()");
+        embedBuilder.setDescription("This is your recruitment form for Devil Dogs!\nTo get started, please answer the questions in [Our Recruitment Google Form]("+Config.APPLICATION_RECRUIT_GOOGLE_FORM_URL+")");
+
+        embedBuilder.addField("What do I Do?", "All you need to do is fill out the google form linked above, which includes several questions about your eligibility to join, and any preferences you have in your gameplay.", false);
+        embedBuilder.addField("After Filling in the form?", "After filling in the form, please write in this channel that you have done so, as it may speed up response times.\nOur admins aren't always watching, so if they are not responding, please be patient! \\:D", false);
+        embedBuilder.setFooter("-Sgt. Stubby", "https://ddclan.org/DDsmall.png");
+
+        ticketChannel.sendMessageEmbeds(embedBuilder.build()).queue();
     }
 }
