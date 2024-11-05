@@ -2,6 +2,7 @@ package Listeners;
 
 import Classes.Bot;
 import Classes.Config;
+import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.entities.Member;
 import net.dv8tion.jda.api.entities.MessageEmbed;
 import net.dv8tion.jda.api.entities.User;
@@ -9,6 +10,7 @@ import net.dv8tion.jda.api.entities.channel.concrete.TextChannel;
 import net.dv8tion.jda.api.events.message.MessageEmbedEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
 
+import java.awt.*;
 import java.io.IOException;
 import java.time.OffsetDateTime;
 import java.util.Arrays;
@@ -45,14 +47,10 @@ public class RecruitmentTicketController extends ListenerAdapter {
         // filter candidate channels for most recent
         TextChannel ticketChannel = candidateTicketChannels.get(0);
 
-        if (candidateTicketChannels.size() > 1) {
-            System.out.println("Multiple Candidate ticket channels found for ticket "+ticketName+", using most recent one");
-            for (TextChannel tc : candidateTicketChannels) {
-                if (tc.getTimeCreated().isAfter(ticketChannel.getTimeCreated())) {
-                    ticketChannel = tc;
-                }
-            }
-        }
+        for (int i = 1; i < candidateTicketChannels.size(); i++)
+            if (candidateTicketChannels.get(i).getTimeCreated().isAfter(ticketChannel.getTimeCreated()))
+                ticketChannel = candidateTicketChannels.get(i);
+
 
         // get user by name
         User member = Bot.jda.getUsersByName(ticketMaker, true).stream()
@@ -62,7 +60,7 @@ public class RecruitmentTicketController extends ListenerAdapter {
         if (member == null)
             throw new RuntimeException("Cannot find member with name: " + ticketMaker);
 
-
+        sendTicketMessage(ticketChannel, member);
 
     }
 
@@ -93,5 +91,12 @@ public class RecruitmentTicketController extends ListenerAdapter {
             throw new IOException("Ticket Tool Format not parsed correctly - Ticket Action was not of type Created");
 
         return new String[]{userName, ticketName};
+    }
+
+    private void sendTicketMessage(TextChannel ticketChannel, User user) {
+        EmbedBuilder embedBuilder = new EmbedBuilder();
+        embedBuilder.setTitle("Hello " + user.getAsMention() + "!");
+        embedBuilder.setColor(Color.GREEN);
+        embedBuilder.setDescription("This is your recruitment form for Devil Dogs!\nTo get started, please answer the questions in [Our Recruitment Google Form]()");
     }
 }
