@@ -22,11 +22,6 @@ import java.util.function.Predicate;
 public class RecruitmentTicketController extends ListenerAdapter {
 
     @Override
-    public void onReady(ReadyEvent event) {
-        sendTicketMessage(Objects.requireNonNull(event.getJDA().getTextChannelById(1122467098107584592L)), Objects.requireNonNull(event.getJDA().getUserById(417228810715660289L)));
-    }
-
-    @Override
     public void onMessageEmbed(MessageEmbedEvent event) {
 
         // if message is not in the certain logging channel, return
@@ -101,7 +96,7 @@ public class RecruitmentTicketController extends ListenerAdapter {
 
     private void sendTicketMessage(TextChannel ticketChannel, User user) {
         EmbedBuilder embedBuilder = new EmbedBuilder();
-        embedBuilder.setTitle("Hello " + user.getGlobalName() + "!");
+        embedBuilder.setTitle("Hello " + user.getName() + "!");
         embedBuilder.setColor(Color.GREEN);
         embedBuilder.setDescription("This is your recruitment form for Devil Dogs!\nTo get started, please answer the questions in [Our Recruitment Google Form]("+Config.APPLICATION_RECRUIT_GOOGLE_FORM_URL+")");
 

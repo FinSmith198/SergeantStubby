@@ -9,7 +9,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="02956651-25b0-4bb1-b8f4-d9af57708a1c" name="Changes" comment="1.2.6.2 Made [DD] in front of name, and more robust name changing, due to errors when DDR-&gt;DD.">
+    <list default="true" id="02956651-25b0-4bb1-b8f4-d9af57708a1c" name="Changes" comment="started work on ticket embedded message response to application">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Listeners/RecruitmentTicketController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Listeners/RecruitmentTicketController.java" afterDir="false" />
     </list>
@@ -28,6 +28,18 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;FinSmith198&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/FinSmith198/SergeantStubby.git&quot;,
+    &quot;accountId&quot;: &quot;71c5fd20-cd18-4e77-b1a2-1e526629d2b0&quot;
+  }
+}</component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/src/Classes/Bot.java" root0="SKIP_INSPECTION" />
   </component>
@@ -43,23 +55,23 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.Stubby Run.executor": "Run",
-    "Application.Test.executor": "Run",
-    "ignore.virus.scanning.warn.message": "true",
-    "kotlin-language-version-configured": "true",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.Stubby Run.executor&quot;: &quot;Run&quot;,
+    &quot;Application.Test.executor&quot;: &quot;Run&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\Finla\Documents\Code\StubbyBot\SergeantStubby" />
@@ -120,6 +132,7 @@
       <workItem from="1728330519789" duration="1506000" />
       <workItem from="1728680589795" duration="106000" />
       <workItem from="1730718222005" duration="3747000" />
+      <workItem from="1730843250049" duration="694000" />
     </task>
     <task id="LOCAL-00001" summary="Added all of 1.2.6 stubby to the Git">
       <created>1706223801574</created>
@@ -206,7 +219,15 @@
       <option name="project" value="LOCAL" />
       <updated>1727866691295</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="started work on ticket embedded message response to application">
+      <option name="closed" value="true" />
+      <created>1730819261989</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1730819261989</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -233,6 +254,7 @@
     <MESSAGE value="bugfix with managing [DD] and [DDR] tags upon role add and removal - now works?" />
     <MESSAGE value="changed ping version command to 1.2.6.1, the current one" />
     <MESSAGE value="1.2.6.2 Made [DD] in front of name, and more robust name changing, due to errors when DDR-&gt;DD." />
-    <option name="LAST_COMMIT_MESSAGE" value="1.2.6.2 Made [DD] in front of name, and more robust name changing, due to errors when DDR-&gt;DD." />
+    <MESSAGE value="started work on ticket embedded message response to application" />
+    <option name="LAST_COMMIT_MESSAGE" value="started work on ticket embedded message response to application" />
   </component>
 </project>
