@@ -3,36 +3,32 @@ package Listeners;
 import Classes.Bot;
 import Classes.Config;
 import net.dv8tion.jda.api.EmbedBuilder;
-import net.dv8tion.jda.api.entities.Member;
 import net.dv8tion.jda.api.entities.MessageEmbed;
-import net.dv8tion.jda.api.entities.User;
 import net.dv8tion.jda.api.entities.channel.concrete.TextChannel;
-import net.dv8tion.jda.api.events.message.MessageEmbedEvent;
-import net.dv8tion.jda.api.events.session.ReadyEvent;
+import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
 
 import java.awt.*;
 import java.io.IOException;
-import java.time.OffsetDateTime;
-import java.util.Arrays;
 import java.util.List;
-import java.util.Objects;
-import java.util.function.Predicate;
 
 public class RecruitmentTicketController extends ListenerAdapter {
 
     @Override
-    public void onMessageEmbed(MessageEmbedEvent event) {
-
-        // if message is not in the certain logging channel, return
+    public void onMessageReceived(MessageReceivedEvent event) {
         if (!event.getChannel().getId().equals(Config.APPLICATION_TICKET_LOGGING_CHANNEL))
             return;
+        if (event.getMessage().getEmbeds().size() != 1)
+            throw new RuntimeException("Too many/few embeds in recruitment ticket handler logs! embeds: "+event.getMessage().getEmbeds().size());
+
+        MessageEmbed embed = event.getMessage().getEmbeds().get(0);
+
 
         // parse TicketMaker Message to get {UserName, ChannelName}, for the maker of the ticket, and channel of the ticket
         String ticketMaker;
         String ticketName;
         try {
-            String[] tmp = this.parseLoggingEmbed(event.getMessageEmbeds().get(0));
+            String[] tmp = this.parseLoggingEmbed(embed);
             ticketMaker = tmp[0].split("#")[0];
             ticketName = tmp[1];
         } catch (IOException e) {
@@ -53,15 +49,8 @@ public class RecruitmentTicketController extends ListenerAdapter {
                 ticketChannel = candidateTicketChannels.get(i);
 
 
-        // get user by name
-        User member = Bot.jda.getUsersByName(ticketMaker, true).stream()
-                .filter(user -> Objects.equals(user.getGlobalName(), ticketMaker))
-                .findFirst().orElse(null);
 
-        if (member == null)
-            throw new RuntimeException("Cannot find member with name: " + ticketMaker);
-
-        sendTicketMessage(ticketChannel, member);
+        sendTicketMessage(ticketChannel, ticketMaker);
 
     }
 
@@ -94,9 +83,9 @@ public class RecruitmentTicketController extends ListenerAdapter {
         return new String[]{userName, ticketName};
     }
 
-    private void sendTicketMessage(TextChannel ticketChannel, User user) {
+    private void sendTicketMessage(TextChannel ticketChannel, String user) {
         EmbedBuilder embedBuilder = new EmbedBuilder();
-        embedBuilder.setTitle("Hello " + user.getName() + "!");
+        embedBuilder.setTitle("Hello " + user + "!");
         embedBuilder.setColor(Color.GREEN);
         embedBuilder.setDescription("This is your recruitment form for Devil Dogs!\nTo get started, please answer the questions in [Our Recruitment Google Form]("+Config.APPLICATION_RECRUIT_GOOGLE_FORM_URL+")");
 

@@ -31,7 +31,7 @@ import java.util.concurrent.TimeUnit;
 // controls member XP and levels. levels are directly determined by XP, and XP needed to level up increases with each level. customisable
 public class CommunityXPController extends ListenerAdapter{
 
-    private final List<String> COMMUNITY_CATEGORIES = Arrays.asList("1001456690304135301", "1128007051600212019");
+    private final List<String> COMMUNITY_CATEGORIES = Arrays.asList("1122467098107584592", "1001456690304135298");
     private final ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(1);
 
     @Override
@@ -93,7 +93,7 @@ public class CommunityXPController extends ListenerAdapter{
                     long[] level_info = Bot.getMemberLevel(Bot.getMemberXP(Objects.requireNonNull(event.getMember()).getId()));
                     eb.setTitle(String.format("You are Currently **Level %s**", level_info[0]));
                     eb.setDescription(String.format("Hey %s, you are only _%s xp_ away from Level %s!", event.getMember().getEffectiveName(), level_info[1], level_info[0]+1));
-                    eb.addField("How Do I Get More XP?", "To get more xp, just send some messages, or even some images, over in the _Community_ category of our discord, such as Media! (You are Limited to "+ Config.MAX_XP_PER_DAY +" xp per day)", false);
+                    eb.addField("How Do I Get More XP?", "To get more xp, just send some messages, or even some images, over in the _Welcome_ category of our discord, such as Media! (You are Limited to "+ Config.MAX_XP_PER_DAY +" xp per day)", false);
                 }
                 eb.setColor(Color.orange);
                 eb.setFooter("-Sgt. Stubby");

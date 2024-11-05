@@ -9,8 +9,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="02956651-25b0-4bb1-b8f4-d9af57708a1c" name="Changes" comment="started work on ticket embedded message response to application">
+    <list default="true" id="02956651-25b0-4bb1-b8f4-d9af57708a1c" name="Changes" comment="finished ticket embedded message response to application">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Listeners/CommunityXPController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Listeners/CommunityXPController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Listeners/RecruitmentTicketController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Listeners/RecruitmentTicketController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -132,7 +133,7 @@
       <workItem from="1728330519789" duration="1506000" />
       <workItem from="1728680589795" duration="106000" />
       <workItem from="1730718222005" duration="3747000" />
-      <workItem from="1730843250049" duration="694000" />
+      <workItem from="1730843250049" duration="4219000" />
     </task>
     <task id="LOCAL-00001" summary="Added all of 1.2.6 stubby to the Git">
       <created>1706223801574</created>
@@ -227,7 +228,15 @@
       <option name="project" value="LOCAL" />
       <updated>1730819261989</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="finished ticket embedded message response to application">
+      <option name="closed" value="true" />
+      <created>1730844009516</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1730844009516</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -255,6 +264,7 @@
     <MESSAGE value="changed ping version command to 1.2.6.1, the current one" />
     <MESSAGE value="1.2.6.2 Made [DD] in front of name, and more robust name changing, due to errors when DDR-&gt;DD." />
     <MESSAGE value="started work on ticket embedded message response to application" />
-    <option name="LAST_COMMIT_MESSAGE" value="started work on ticket embedded message response to application" />
+    <MESSAGE value="finished ticket embedded message response to application" />
+    <option name="LAST_COMMIT_MESSAGE" value="finished ticket embedded message response to application" />
   </component>
 </project>
