@@ -177,19 +177,22 @@ public class TagRestrictorListener extends ListenerAdapter {
 
     public void changeNickName(Member member, String addition){
         try {
-            member.modifyNickname(addition + member.getNickname()).queue();
+            String oldNickname = member.getNickname() == null ? member.getEffectiveName() : member.getNickname();
+            member.modifyNickname(addition + oldNickname).queue();
         } catch (HierarchyException | NullPointerException ignored){}
     }
 
     public void changeNickName(Member member, String target, String replacement){
         try {
-            member.modifyNickname(Objects.requireNonNull(member.getNickname()).replace(target, replacement).strip()).queue();
+            String oldNickname = member.getNickname() == null ? member.getEffectiveName() : member.getNickname();
+            member.modifyNickname(Objects.requireNonNull(oldNickname).replace(target, replacement).strip()).queue();
         } catch (HierarchyException | NullPointerException ignored){}
     }
 
     public void changeNickNameRegex(Member member, String regex, String replacement){
         try {
-            member.modifyNickname(Objects.requireNonNull(member.getNickname()).replaceAll(regex, replacement).strip()).queue();
+            String oldNickname = member.getNickname() == null ? member.getEffectiveName() : member.getNickname();
+            member.modifyNickname(Objects.requireNonNull(oldNickname).replaceAll(regex, replacement).strip()).queue();
         } catch (HierarchyException | NullPointerException ignored){}
     }
 
