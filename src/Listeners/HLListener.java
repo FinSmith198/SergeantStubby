@@ -51,7 +51,7 @@ public class HLListener extends ListenerAdapter {
 
                 if (steam_id.length() != 17) throw new NumberFormatException("Invalid SteamID; Steam ID Must be 17 digits long");
 
-                String parameters = String.format("{\"steam_id_64\": \"%s\", \"name\": \"%s\", \"forward\": false}", steam_id, name);
+                String parameters = String.format("{\"player_id\": \"%s\", \"name\": \"%s\", \"forward\": false}", steam_id, name);
 
                 JSONObject returned = Objects.requireNonNull(sendRequest("do_add_vip", parameters));
                 if (returned.get("failed").equals(true)) throw new Exception("Server did not accept the command. Maybe make sure it's active, or try new data");
@@ -83,7 +83,7 @@ public class HLListener extends ListenerAdapter {
                 DateTimeFormatter format1 = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss+00:00", Locale.ENGLISH);
                 String expiry_date = format1.format(ldt);
 
-                String parameters = String.format("{\"steam_id_64\": \"%s\", \"name\": \"%s\", \"forward\": false, \"expiration\": \"%s\"}", steam_id, name, expiry_date);
+                String parameters = String.format("{\"player_id\": \"%s\", \"name\": \"%s\", \"forward\": false, \"expiration\": \"%s\"}", steam_id, name, expiry_date);
 
                 JSONObject returned = Objects.requireNonNull(sendRequest("do_add_vip", parameters));
                 if (returned.get("failed").equals(true)) throw new Exception("Server did not accept the command. Maybe make sure it's active, or try new data");
@@ -138,10 +138,10 @@ public class HLListener extends ListenerAdapter {
                         JSONObject player = sortedPlayerStats.get(i);
 
                         // do not add player to vip list, if already vip
-                        String steam_id = player.get("steam_id_64").toString();
+                        String steam_id = player.get("player_id").toString();
                         String name = player.get("name").toString();
 
-                        String parameters = String.format("{\"steam_id_64\": \"%s\", \"name\": \"%s\", \"forward\": false}", steam_id, name);
+                        String parameters = String.format("{\"player_id\": \"%s\", \"name\": \"%s\", \"forward\": false}", steam_id, name);
 
                         JSONObject returned = Objects.requireNonNull(sendRequest("do_add_vip", parameters));
                         if (returned.get("failed").equals(true)) throw new Exception("Server did not accept the command. Maybe make sure it's active, or try new data");
@@ -165,11 +165,11 @@ public class HLListener extends ListenerAdapter {
 
                         if ((boolean) player.get("is_vip")) continue;
 
-                        String steam_id = player.get("steam_id_64").toString();
+                        String steam_id = player.get("player_id").toString();
                         String name = player.get("name").toString();
 
 
-                        String parameters = String.format("{\"steam_id_64\": \"%s\", \"name\": \"%s\", \"forward\": false, \"expiration\": \"%s\"}", steam_id, name, expiry_date);
+                        String parameters = String.format("{\"player_id\": \"%s\", \"name\": \"%s\", \"forward\": false, \"expiration\": \"%s\"}", steam_id, name, expiry_date);
 
                         JSONObject returned = Objects.requireNonNull(sendRequest("do_add_vip", parameters));
                         if (returned.get("failed").equals(true)) throw new Exception("RCON Server did not accept the command. Maybe make sure the server is active, or try new data");
@@ -290,7 +290,7 @@ public class HLListener extends ListenerAdapter {
 
                         List<String> oldIDs = new ArrayList<>();
                         for (Object old_player : oldPlayerStats) {
-                            oldIDs.add((String) ((JSONObject) old_player).get("steam_id_64"));
+                            oldIDs.add((String) ((JSONObject) old_player).get("player_id"));
                         }
 
 
@@ -304,12 +304,12 @@ public class HLListener extends ListenerAdapter {
 
                             // check if the returned value is valid
                             if (player_stat.get("profile") == null) continue;
-                            if (!player_stat.get("steam_id_64").toString().replaceAll("[0-9]+", "").isEmpty()) continue;
+                            if (!player_stat.get("player_id").toString().replaceAll("[0-9]+", "").isEmpty()) continue;
 
                             String formatted_name = player_stat.get("name").toString().replaceAll("'", "").replaceAll("\"", "");
 
                             // only add seeding time if player has joined in last check, and seeding is in motion. do not count 1 player as seeding
-                            if (oldIDs.contains((String) player_stat.get("steam_id_64")) && (playerStats.size() < 50 && playerStats.size() > 1))
+                            if (oldIDs.contains((String) player_stat.get("player_id")) && (playerStats.size() < 50 && playerStats.size() > 1))
                             {
                                 // i++;
                                 // long current_playtime = (long) ((JSONObject) player_stat.get("profile")).get("current_playtime_seconds");
@@ -319,16 +319,16 @@ public class HLListener extends ListenerAdapter {
                                 // if for some reason it doesn't equal about the delay, just add the delay
                                 // if (round(seed_to_add, 0) != delay) seed_to_add = delay;
 
-                                c.createStatement().execute("UPDATE SteamPlayers SET (username, time_seeded) = ('"+formatted_name+"', time_seeded + "+ delay +") WHERE STEAM_ID = " + player_stat.get("steam_id_64") + ";");
+                                c.createStatement().execute("UPDATE SteamPlayers SET (username, time_seeded) = ('"+formatted_name+"', time_seeded + "+ delay +") WHERE STEAM_ID = " + player_stat.get("player_id") + ";");
 
                             }
                             // if not, seeding time is not to be updated, so just either attempt to insert the player, or if already present, update their record
                             else {
                                 try {
-                                    c.createStatement().execute("INSERT INTO SteamPlayers (STEAM_ID, username) VALUES (" + player_stat.get("steam_id_64") + ", '" + formatted_name + "');");
+                                    c.createStatement().execute("INSERT INTO SteamPlayers (STEAM_ID, username) VALUES (" + player_stat.get("player_id") + ", '" + formatted_name + "');");
                                 } catch (SQLException e) {
                                     try {
-                                        c.createStatement().execute("UPDATE SteamPlayers SET (username) = ('" + formatted_name + "') WHERE STEAM_ID = " + player_stat.get("steam_id_64") + ";");
+                                        c.createStatement().execute("UPDATE SteamPlayers SET (username) = ('" + formatted_name + "') WHERE STEAM_ID = " + player_stat.get("player_id") + ";");
                                     } catch (SQLException o){
                                         Bot.sendErrorMessage(e);
                                     }
