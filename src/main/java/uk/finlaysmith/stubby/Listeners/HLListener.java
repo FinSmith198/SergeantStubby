@@ -1,7 +1,7 @@
-package Listeners;
+package uk.finlaysmith.stubby.Listeners;
 
-import Classes.Bot;
-import Classes.Config;
+import uk.finlaysmith.stubby.Classes.Bot;
+import uk.finlaysmith.stubby.Classes.Config;
 import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.entities.Message;
 import net.dv8tion.jda.api.entities.MessageHistory;
@@ -285,7 +285,7 @@ public class HLListener extends ListenerAdapter {
                         // only true if server is up, but with nobody on it, or server is down. so, there's no point doing rest of the function
                         if (playerStats.isEmpty()) {
                             oldPlayerStats = new JSONArray();
-//                            return;
+                            return;
                         }
 
                         List<String> oldIDs = new ArrayList<>();

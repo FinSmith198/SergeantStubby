@@ -1,15 +1,15 @@
-package Classes;
+package uk.finlaysmith.stubby.Classes;
 
-import Listeners.NonSpecificSlashCommands.AdminCommands;
-import Listeners.NonSpecificSlashCommands.FunCommands;
-import Listeners.*;
-import Listeners.NonSpecificSlashCommands.PrivateCommands;
+import uk.finlaysmith.stubby.Listeners.*;
 import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.JDABuilder;
 import net.dv8tion.jda.api.entities.Member;
 import net.dv8tion.jda.api.requests.GatewayIntent;
 import net.dv8tion.jda.api.utils.MemberCachePolicy;
+import uk.finlaysmith.stubby.Listeners.NonSpecificSlashCommands.AdminCommands;
+import uk.finlaysmith.stubby.Listeners.NonSpecificSlashCommands.FunCommands;
+import uk.finlaysmith.stubby.Listeners.NonSpecificSlashCommands.PrivateCommands;
 
 import java.io.PrintWriter;
 import java.io.StringWriter;

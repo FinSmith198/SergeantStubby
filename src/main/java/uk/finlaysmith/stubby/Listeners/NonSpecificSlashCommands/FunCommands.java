@@ -1,6 +1,6 @@
-package Listeners.NonSpecificSlashCommands;
+package uk.finlaysmith.stubby.Listeners.NonSpecificSlashCommands;
 
-import Classes.Bot;
+import uk.finlaysmith.stubby.Classes.Bot;
 import net.dv8tion.jda.api.entities.Activity;
 import net.dv8tion.jda.api.entities.GuildVoiceState;
 import net.dv8tion.jda.api.entities.Member;

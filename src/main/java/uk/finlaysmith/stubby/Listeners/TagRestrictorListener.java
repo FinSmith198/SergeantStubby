@@ -1,6 +1,6 @@
-package Listeners;
+package uk.finlaysmith.stubby.Listeners;
 
-import Classes.Bot;
+import uk.finlaysmith.stubby.Classes.Bot;
 import net.dv8tion.jda.api.Permission;
 import net.dv8tion.jda.api.entities.Guild;
 import net.dv8tion.jda.api.entities.Member;
@@ -119,7 +119,6 @@ public class TagRestrictorListener extends ListenerAdapter {
 
                 // DDR -> DD (send message):
                 event.getGuild().removeRoleFromMember(member.getUser(), Objects.requireNonNull(event.getGuild().getRoleById(DDRroleID))).queue();
-//                changeNickName(member, "[DD] ");
 
                 // promotion message
                 if (!Bot.getPromotionMessageStatus()) return;

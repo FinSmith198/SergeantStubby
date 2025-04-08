@@ -9,15 +9,85 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="02956651-25b0-4bb1-b8f4-d9af57708a1c" name="Changes" comment="finished ticket embedded message response to application">
+    <list default="true" id="02956651-25b0-4bb1-b8f4-d9af57708a1c" name="Changes" comment="testing prototype for the application ticket responder for DD recruits">
+      <change afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gradlew" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gradlew.bat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/SergeantStubby.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Listeners/CommunityXPController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Listeners/CommunityXPController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Listeners/RecruitmentTicketController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Listeners/RecruitmentTicketController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Classes/Bot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/uk/finlaysmith/stubby/Classes/Bot.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Classes/Config.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/uk/finlaysmith/stubby/Classes/Config.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Listeners/BotReadier.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/uk/finlaysmith/stubby/Listeners/BotReadier.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Listeners/CommunityXPController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/uk/finlaysmith/stubby/Listeners/CommunityXPController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Listeners/HLListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/uk/finlaysmith/stubby/Listeners/HLListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Listeners/MemberCounter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/uk/finlaysmith/stubby/Listeners/MemberCounter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Listeners/NonSpecificSlashCommands/AdminCommands.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/uk/finlaysmith/stubby/Listeners/NonSpecificSlashCommands/AdminCommands.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Listeners/NonSpecificSlashCommands/FunCommands.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/uk/finlaysmith/stubby/Listeners/NonSpecificSlashCommands/FunCommands.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Listeners/NonSpecificSlashCommands/PrivateCommands.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/uk/finlaysmith/stubby/Listeners/NonSpecificSlashCommands/PrivateCommands.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Listeners/RecruitmentTicketController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/uk/finlaysmith/stubby/Listeners/RecruitmentTicketController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Listeners/TagRestrictorListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/uk/finlaysmith/stubby/Listeners/TagRestrictorListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Listeners/WelcomeMessageListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/uk/finlaysmith/stubby/Listeners/WelcomeMessageListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/META-INF/MANIFEST.MF" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/META-INF/MANIFEST.MF" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/SergeantStubby.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/uk/finlaysmith/stubby/SergeantStubby.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Test.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/uk/finlaysmith/stubby/Test.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$">
+      <ProjectState />
+    </projectState>
+  </component>
+  <component name="ExternalProjectsManager">
+    <system id="GRADLE">
+      <state>
+        <task path="$PROJECT_DIR$">
+          <activation />
+        </task>
+        <projects_view>
+          <tree_state>
+            <expand>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="SergeantStubby" type="f1a62948:ProjectNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="SergeantStubby" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="SergeantStubby" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+                <item name="application" type="c8890929:TasksNode$1" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="SergeantStubby" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+                <item name="build" type="c8890929:TasksNode$1" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="SergeantStubby" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+                <item name="distribution" type="c8890929:TasksNode$1" />
+              </path>
+            </expand>
+            <select />
+          </tree_state>
+        </projects_view>
+      </state>
+    </system>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -27,6 +97,11 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="main" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="GitHubPullRequestSearchHistory">{
@@ -38,7 +113,7 @@
   <component name="GithubPullRequestsUISettings">{
   &quot;selectedUrlAndAccountId&quot;: {
     &quot;url&quot;: &quot;https://github.com/FinSmith198/SergeantStubby.git&quot;,
-    &quot;accountId&quot;: &quot;71c5fd20-cd18-4e77-b1a2-1e526629d2b0&quot;
+    &quot;accountId&quot;: &quot;2153b17b-0bb9-4b64-ab57-308601e07d57&quot;
   }
 }</component>
   <component name="HighlightingSettingsPerFile">
@@ -56,33 +131,52 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Application.Stubby Run.executor&quot;: &quot;Run&quot;,
-    &quot;Application.Test.executor&quot;: &quot;Run&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.Stubby Run.executor": "Run",
+    "Application.Test.executor": "Run",
+    "Gradle.SergeantStubby [assembleDist].executor": "Run",
+    "Gradle.SergeantStubby [buildDependents].executor": "Run",
+    "Gradle.SergeantStubby [build].executor": "Run",
+    "Gradle.SergeantStubby [clean].executor": "Run",
+    "Gradle.SergeantStubby [jar].executor": "Run",
+    "Gradle.SergeantStubby [run].executor": "Run",
+    "Gradle.SergeantStubby.executor": "Run",
+    "JAR Application.SergeantStubby-1.0.0.jar.executor": "Run",
+    "JAR Application.gradle-wrapper.jar.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "extract.method.default.visibility": "private",
+    "git-widget-placeholder": "structureRefactor",
+    "ignore.virus.scanning.warn.message": "true",
+    "kotlin-language-version-configured": "true",
+    "last_directory_selection": "/home/finlay/Documents/Code/projects/SergeantStubby/src/main/java",
+    "last_opened_file_path": "/home/finlay/Documents/Code/projects/SergeantStubby/src/main/test",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "reference.settingsdialog.project.gradle",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/test" />
       <recent name="C:\Users\Finla\Documents\Code\StubbyBot\SergeantStubby" />
       <recent name="C:\Users\Finla\Documents\Code\StubbyBot\SergeantStubby\src" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/java" />
+      <recent name="$PROJECT_DIR$/src/main/java/uk/finlaysmith/stubby/META-INF" />
+      <recent name="$PROJECT_DIR$/src/main/java/uk/finlaysmith/stubby" />
       <recent name="C:\Users\Finla\Documents\Code\StubbyBot\SergeantStubby" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Stubby Run">
+  <component name="RunManager" selected="Gradle.SergeantStubby [assembleDist]">
     <configuration name="Stubby Run" type="Application" factoryName="Application">
       <option name="ALTERNATIVE_JRE_PATH" value="18" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
@@ -92,6 +186,118 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="SergeantStubby [assembleDist]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="assembleDist" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>false</RunAsTest>
+      <method v="2" />
+    </configuration>
+    <configuration name="SergeantStubby [buildDependents]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="buildDependents" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>false</RunAsTest>
+      <method v="2" />
+    </configuration>
+    <configuration name="SergeantStubby [clean]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="clean" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>false</RunAsTest>
+      <method v="2" />
+    </configuration>
+    <configuration name="SergeantStubby [jar]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="jar" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>false</RunAsTest>
+      <method v="2" />
+    </configuration>
+    <configuration name="SergeantStubby" type="GradleRunConfiguration" factoryName="Gradle" nameIsGenerated="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list />
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>false</RunAsTest>
+      <method v="2" />
+    </configuration>
+    <configuration name="SergeantStubby-1.0.0.jar" type="JarApplication" temporary="true">
+      <option name="JAR_PATH" value="$PROJECT_DIR$/build/libs/SergeantStubby-1.0.0.jar" />
+      <method v="2" />
+    </configuration>
     <configuration name="Stubby jar build" type="JarApplication">
       <option name="JAR_PATH" value="$PROJECT_DIR$/latest_stubby.jar" />
       <option name="WORKING_DIRECTORY" value="C:\Users\Finla\Documents\Code\StubbyBot\SergeantStubby" />
@@ -100,14 +306,29 @@
     </configuration>
     <list>
       <item itemvalue="Application.Stubby Run" />
+      <item itemvalue="Gradle.SergeantStubby" />
+      <item itemvalue="Gradle.SergeantStubby [assembleDist]" />
+      <item itemvalue="Gradle.SergeantStubby [buildDependents]" />
+      <item itemvalue="Gradle.SergeantStubby [clean]" />
+      <item itemvalue="Gradle.SergeantStubby [jar]" />
       <item itemvalue="JAR Application.Stubby jar build" />
+      <item itemvalue="JAR Application.SergeantStubby-1.0.0.jar" />
     </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Gradle.SergeantStubby [assembleDist]" />
+        <item itemvalue="JAR Application.SergeantStubby-1.0.0.jar" />
+        <item itemvalue="Gradle.SergeantStubby [jar]" />
+        <item itemvalue="Gradle.SergeantStubby [clean]" />
+        <item itemvalue="Gradle.SergeantStubby [buildDependents]" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-jdk-9f38398b9061-39b83d9b5494-intellij.indexing.shared.core-IU-241.17890.1" />
-        <option value="bundled-js-predefined-1d06a55b98c1-0b3e54e931b4-JavaScript-IU-241.17890.1" />
+        <option value="bundled-jdk-9823dce3aa75-28b599e66164-intellij.indexing.shared.core-IU-242.23726.103" />
+        <option value="bundled-js-predefined-d6986cc7102b-5c90d61e3bab-JavaScript-IU-242.23726.103" />
       </set>
     </attachedChunks>
   </component>
@@ -133,7 +354,15 @@
       <workItem from="1728330519789" duration="1506000" />
       <workItem from="1728680589795" duration="106000" />
       <workItem from="1730718222005" duration="3747000" />
-      <workItem from="1730843250049" duration="4219000" />
+      <workItem from="1733324079726" duration="5000" />
+      <workItem from="1734356281140" duration="2166000" />
+      <workItem from="1734970344797" duration="742000" />
+      <workItem from="1736597794832" duration="198000" />
+      <workItem from="1736781747870" duration="143000" />
+      <workItem from="1736853367236" duration="81000" />
+      <workItem from="1744108066884" duration="43000" />
+      <workItem from="1744108197741" duration="146000" />
+      <workItem from="1744108381393" duration="2004000" />
     </task>
     <task id="LOCAL-00001" summary="Added all of 1.2.6 stubby to the Git">
       <created>1706223801574</created>
@@ -220,23 +449,7 @@
       <option name="project" value="LOCAL" />
       <updated>1727866691295</updated>
     </task>
-    <task id="LOCAL-00013" summary="started work on ticket embedded message response to application">
-      <option name="closed" value="true" />
-      <created>1730819261989</created>
-      <option name="number" value="00013" />
-      <option name="presentableId" value="LOCAL-00013" />
-      <option name="project" value="LOCAL" />
-      <updated>1730819261989</updated>
-    </task>
-    <task id="LOCAL-00014" summary="finished ticket embedded message response to application">
-      <option name="closed" value="true" />
-      <created>1730844009516</created>
-      <option name="number" value="00014" />
-      <option name="presentableId" value="LOCAL-00014" />
-      <option name="project" value="LOCAL" />
-      <updated>1730844009516</updated>
-    </task>
-    <option name="localTasksCounter" value="15" />
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -263,8 +476,6 @@
     <MESSAGE value="bugfix with managing [DD] and [DDR] tags upon role add and removal - now works?" />
     <MESSAGE value="changed ping version command to 1.2.6.1, the current one" />
     <MESSAGE value="1.2.6.2 Made [DD] in front of name, and more robust name changing, due to errors when DDR-&gt;DD." />
-    <MESSAGE value="started work on ticket embedded message response to application" />
-    <MESSAGE value="finished ticket embedded message response to application" />
-    <option name="LAST_COMMIT_MESSAGE" value="finished ticket embedded message response to application" />
+    <option name="LAST_COMMIT_MESSAGE" value="1.2.6.2 Made [DD] in front of name, and more robust name changing, due to errors when DDR-&gt;DD." />
   </component>
 </project>

@@ -1,4 +1,4 @@
-package Classes;
+package uk.finlaysmith.stubby.Classes;
 
 import org.json.simple.JSONObject;
 

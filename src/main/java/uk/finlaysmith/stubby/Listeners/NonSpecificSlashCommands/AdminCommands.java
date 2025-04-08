@@ -1,6 +1,6 @@
-package Listeners.NonSpecificSlashCommands;
+package uk.finlaysmith.stubby.Listeners.NonSpecificSlashCommands;
 
-import Classes.Bot;
+import uk.finlaysmith.stubby.Classes.Bot;
 import net.dv8tion.jda.api.events.interaction.command.SlashCommandInteractionEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
 import org.jetbrains.annotations.NotNull;

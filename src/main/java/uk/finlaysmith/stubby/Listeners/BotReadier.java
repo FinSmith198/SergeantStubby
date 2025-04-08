@@ -1,7 +1,7 @@
-package Listeners;
+package uk.finlaysmith.stubby.Listeners;
 
-import Classes.Bot;
-import Classes.Config;
+import uk.finlaysmith.stubby.Classes.Bot;
+import uk.finlaysmith.stubby.Classes.Config;
 import net.dv8tion.jda.api.Permission;
 import net.dv8tion.jda.api.entities.Member;
 import net.dv8tion.jda.api.events.guild.GuildReadyEvent;

@@ -1,5 +1,7 @@
-import Classes.Bot;
-import Classes.Config;
+package uk.finlaysmith.stubby;
+
+import uk.finlaysmith.stubby.Classes.Bot;
+import uk.finlaysmith.stubby.Classes.Config;
 
 
 public class SergeantStubby {
