@@ -40,7 +40,7 @@ public class Bot {
                 );
 
         jda = builder.addEventListeners(
-                        dog_tag_restrictor, new WelcomeMessageListener(), new BotReadier(), new CommunityXPController(),
+                        dog_tag_restrictor, /*new WelcomeMessageListener(),*/ new BotReadier(), new CommunityXPController(),
                         new AdminCommands(), new FunCommands(), new PrivateCommands(),
                         new HLListener(), new MemberCounter(), new RecruitmentTicketController()
                 )

@@ -169,19 +169,29 @@ public class TagRestrictorListener extends ListenerAdapter {
                 break;
             } else if (role.getId().equals(DDroleID)) {
                 new_DD_members.remove(member.getId());
-                changeNickName(member, "[DD] ", "");
-                break;
+                // skip this for now, as Stener wanted old DD members changed to 'veteran' to keep DD tags
+                continue;
+//                changeNickName(member, "[DD] ", "");
+//                break;
             }
         }
     }
 
+
+    /**
+     * Adds prefix to server nickname if not already there
+     */
     public void changeNickName(Member member, String addition){
         try {
             String oldNickname = member.getNickname() == null ? member.getEffectiveName() : member.getNickname();
+            if (oldNickname.startsWith(addition)) return;
             member.modifyNickname(addition + oldNickname).queue();
         } catch (HierarchyException | NullPointerException ignored){}
     }
 
+    /**
+     * Replace all matching strings in username with another string
+     */
     public void changeNickName(Member member, String target, String replacement){
         try {
             String oldNickname = member.getNickname() == null ? member.getEffectiveName() : member.getNickname();
@@ -189,6 +199,9 @@ public class TagRestrictorListener extends ListenerAdapter {
         } catch (HierarchyException | NullPointerException ignored){}
     }
 
+    /**
+     * Replace all matching regex strings in username with another string
+     */
     public void changeNickNameRegex(Member member, String regex, String replacement){
         try {
             String oldNickname = member.getNickname() == null ? member.getEffectiveName() : member.getNickname();
