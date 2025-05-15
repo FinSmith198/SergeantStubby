@@ -33,7 +33,7 @@ public class Config {
     public static void init(String filePath){
         try {
             Class.forName("org.sqlite.JDBC");
-            Connection databaseConnection = DriverManager.getConnection("jdbc:sqlite:DDServerData.db");
+            Connection databaseConnection = DriverManager.getConnection("jdbc:sqlite:"+filePath);
 
 
             ResultSet resultSet = databaseConnection.createStatement().executeQuery("SELECT * FROM Config INNER JOIN BotData ON (BotData.SNAPSHOT = Config.SNAPSHOT);");
