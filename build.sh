@@ -18,7 +18,7 @@ javac -d "$BUILD_DIR" -cp "$CP" @sources.txt
 rm -f sources.txt
 
 # copy resources to buildpath (the Icons)
-cp -r "$RESOURCES_DIR"/* "$BUILD_DIR"/
+# cp -r "$RESOURCES_DIR"/* "$BUILD_DIR"/
 
 # run the main class with java -cp (adjust package path accordingly)
 MAIN_CLASS="SergeantStubby"
