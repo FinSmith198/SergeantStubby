@@ -269,8 +269,12 @@ public class TagRestrictorListener extends ListenerAdapter {
                         promotion_message.append(String.format(", and <@%s>! %s", new_DDR_members.get(i), emojis[0]));
                     }
                     for (String member : new_DDR_members) {
-                        createRecruitBarracksThread(guild, Objects.requireNonNull(guild.getMemberById(member)), emojis);
+                        Member m = guild.getMemberById(member);
+                        assert m != null;
+                        m.modifyNickname(m.getEffectiveName().replaceAll(" \\[DD]", "").trim()).queue();
+                        createRecruitBarracksThread(guild, Objects.requireNonNull(m), emojis);
                     }
+
                     new_DDR_members.clear();
                     Objects.requireNonNull(guild.getTextChannelById(DDGeneral)).sendMessage(promotion_message.toString()).queue();
 
@@ -286,8 +290,12 @@ public class TagRestrictorListener extends ListenerAdapter {
                 guild.getId().equals("821405370014629930") ? "1121022365921460355" : "1001487249306820699"
         );
 
+        DDroleID = "1001491099749204048";
+        if (guild.getId().equals("821405370014629930"))  // sets to different if the guild is in test server
+            DDroleID = "1127629409772376144";
+
         String naem = member.getEffectiveName().replaceAll("\\[DDR]", "").trim();
-        String message = "<@&1127629409772376144> A new Recruit is here! \nIf anyone has played with them before, or has any feedback, feel free post it below 😊.\n\nRemember, when you vote, you need to put a reason behind it!";
+        String message = "<@&"+DDroleID+"> A new Recruit is here! \nIf anyone has played with them before, or has any feedback, feel free post it below 😊.\n\nRemember, when you vote, you need to put a reason behind it!";
 
         assert recruitBarracks != null;
         recruitBarracks.createThreadChannel(naem).queue(
