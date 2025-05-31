@@ -1,21 +1,16 @@
 package Listeners;
 
 import Classes.Bot;
-import net.dv8tion.jda.api.Permission;
 import net.dv8tion.jda.api.entities.Guild;
 import net.dv8tion.jda.api.entities.Member;
 import net.dv8tion.jda.api.entities.Role;
-import net.dv8tion.jda.api.entities.channel.concrete.PrivateChannel;
 import net.dv8tion.jda.api.entities.channel.concrete.TextChannel;
 import net.dv8tion.jda.api.events.guild.member.GuildMemberRoleAddEvent;
 import net.dv8tion.jda.api.events.guild.member.GuildMemberRoleRemoveEvent;
-import net.dv8tion.jda.api.events.guild.member.update.GuildMemberUpdateNicknameEvent;
 import net.dv8tion.jda.api.exceptions.HierarchyException;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
-import net.dv8tion.jda.api.interactions.commands.DefaultMemberPermissions;
 import org.jetbrains.annotations.NotNull;
 
-import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -23,7 +18,6 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.ScheduledFuture;
 import java.util.concurrent.TimeUnit;
-import java.util.function.Consumer;
 
 public class TagRestrictorListener extends ListenerAdapter {
 
@@ -254,7 +248,7 @@ public class TagRestrictorListener extends ListenerAdapter {
             DDR_handle.cancel(false);
         } catch (NullPointerException ignored){}
 
-
+        // This schedule is run whenever the DDR role is added to a new user.
         DDR_handle = DDR_executor.schedule(() ->{
                     if (new_DDR_members.isEmpty()) return;
 
@@ -274,11 +268,31 @@ public class TagRestrictorListener extends ListenerAdapter {
                         }
                         promotion_message.append(String.format(", and <@%s>! %s", new_DDR_members.get(i), emojis[0]));
                     }
+                    for (String member : new_DDR_members) {
+                        createRecruitBarracksThread(guild, Objects.requireNonNull(guild.getMemberById(member)), emojis);
+                    }
                     new_DDR_members.clear();
                     Objects.requireNonNull(guild.getTextChannelById(DDGeneral)).sendMessage(promotion_message.toString()).queue();
+
+
 
                     }
                 , 30, TimeUnit.SECONDS);
     }
 
+    private void createRecruitBarracksThread(Guild guild, Member member, String[] emojis) {
+        // if in bot testing guild, return the test channel, otheriwse, recruit barracks
+        TextChannel recruitBarracks = Bot.jda.getTextChannelById(
+                guild.getId().equals("821405370014629930") ? "1121022365921460355" : "1001487249306820699"
+        );
+
+        String naem = member.getEffectiveName().replaceAll("\\[DDR]", "").trim();
+        String message = "<@&1127629409772376144> A new Recruit is here! \nIf anyone has played with them before, or has any feedback, feel free post it below 😊.\n\nRemember, when you vote, you need to put a reason behind it!";
+
+        assert recruitBarracks != null;
+        recruitBarracks.createThreadChannel(naem).queue(
+                threadChannel -> threadChannel.sendMessage(message).queue()
+        );
+
+    }
 }
