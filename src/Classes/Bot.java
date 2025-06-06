@@ -42,14 +42,16 @@ public class Bot {
                 );
 
         jda = builder.addEventListeners(
-                        dog_tag_restrictor, /*new WelcomeMessageListener(),*/ new BotReadier(), new CommunityXPController(),
+                        /*new WelcomeMessageListener(),*/ new BotReadier(), new CommunityXPController(),
                         new AdminCommands(), new FunCommands(), new PrivateCommands(),
-                        new HLListener(), new MemberCounter(), new RecruitmentTicketController(), fin_move_listener
+                        new HLListener(), new MemberCounter(), new RecruitmentTicketController()
                 )
                 .build().awaitReady();
 
-        setTagRestrictor(is_tag_restrictor_active);
-        setFinMoveListener(is_fin_move_listener_active);
+        if (is_fin_move_listener_active)
+            jda.addEventListener(fin_move_listener);
+        if (is_tag_restrictor_active)
+            jda.addEventListener(dog_tag_restrictor);
     }
 
 
