@@ -22,6 +22,8 @@ import java.util.Objects;
 
 public class Bot {
     private static final TagRestrictorListener dog_tag_restrictor = new TagRestrictorListener();
+    private static final FinMoveListener fin_move_listener = new FinMoveListener();
+    private static boolean is_fin_move_listener_active = false;
     private static boolean is_tag_restrictor_active = true;
     private static boolean is_promotion_message_active = true;
 
@@ -42,7 +44,7 @@ public class Bot {
         jda = builder.addEventListeners(
                         dog_tag_restrictor, /*new WelcomeMessageListener(),*/ new BotReadier(), new CommunityXPController(),
                         new AdminCommands(), new FunCommands(), new PrivateCommands(),
-                        new HLListener(), new MemberCounter(), new RecruitmentTicketController()
+                        new HLListener(), new MemberCounter(), new RecruitmentTicketController(), fin_move_listener
                 )
                 .build().awaitReady();
 
@@ -50,6 +52,20 @@ public class Bot {
 
 
     public static boolean setTagRestrictor(boolean set) {
+        if ((is_fin_move_listener_active && set) || (!is_fin_move_listener_active && !set)){
+            return is_fin_move_listener_active;
+        }
+
+        if (set) {
+            jda.addEventListener(fin_move_listener);
+            return is_fin_move_listener_active = true;
+        }
+
+        jda.removeEventListener(fin_move_listener);
+        return is_fin_move_listener_active = false;
+    }
+
+    public static boolean setFinMoveListener(boolean set) {
         // if user wants to set listener to what it already set to, e.g. trying to turn the lights on when they're already on,
         // the program just returns from the function with the status, acting as if it really did set the listener, to prevent further issues
         if ((is_tag_restrictor_active && set) || (!is_tag_restrictor_active && !set)){

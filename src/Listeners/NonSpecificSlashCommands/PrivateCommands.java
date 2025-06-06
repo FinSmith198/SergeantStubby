@@ -44,6 +44,12 @@ public class PrivateCommands extends ListenerAdapter {
                 }
                 break;
             }
+            case "set-fin-move" : {
+                event.deferReply(true).queue();
+                boolean active = Bot.setFinMoveListener(Objects.requireNonNull(event.getOption("set")).getAsBoolean());
+                event.getHook().sendMessage("Fin Move Restrictor is now set to "+active).queue();
+                break;
+            }
             case "execute-sql" : {
                 event.deferReply().queue();
                 StringBuilder response = new StringBuilder("The SQL was Successfully Run");
