@@ -48,6 +48,8 @@ public class Bot {
                 )
                 .build().awaitReady();
 
+        setTagRestrictor(is_tag_restrictor_active);
+        setFinMoveListener(is_fin_move_listener_active);
     }
 
 
