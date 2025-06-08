@@ -53,17 +53,10 @@ public class BotReadier extends ListenerAdapter {
                     .setDefaultPermissions(DefaultMemberPermissions.DISABLED)
             );
 
-            commandData.add(Commands.slash("set-fin-move", "Sets the fin move restrictor to restrict moving Fin.").addOptions(
-                            new OptionData(OptionType.BOOLEAN, "set", "true/false", true)
-                            )
-                            .setDefaultPermissions(DefaultMemberPermissions.DISABLED)
-            );
-
-
             commandData.add(Commands.slash("execute-sql", "sends an SQL Query to Stubby's Database, and Returns and Results.").addOptions(
                             new OptionData(OptionType.STRING, "sql", "the SQL of the query to be ran, make sure it's formatted correctly", true)
-                            )
-                            .setDefaultPermissions(DefaultMemberPermissions.DISABLED)
+                    )
+                    .setDefaultPermissions(DefaultMemberPermissions.DISABLED)
             );
 
             event.getGuild().updateCommands().addCommands(commandData).queue();
