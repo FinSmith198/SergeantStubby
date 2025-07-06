@@ -15,7 +15,7 @@ CP=$(find "$LIB_DIR" -name "*.jar" | paste -sd ":" -)
 # compile Java files
 find "$SRC_DIR" -name "*.java" > sources.txt
 javac -d "$BUILD_DIR" -cp "$CP" @sources.txt
-rm -f sources.txt
+rm sources.txt
 
 # copy resources to buildpath (the Icons)
 # cp -r "$RESOURCES_DIR"/* "$BUILD_DIR"/

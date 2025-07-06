@@ -6,11 +6,16 @@ import net.dv8tion.jda.api.events.interaction.command.SlashCommandInteractionEve
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
 import org.jetbrains.annotations.NotNull;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.util.Objects;
+import java.util.concurrent.ExecutionException;
 
 public class PrivateCommands extends ListenerAdapter {
 
@@ -42,6 +47,41 @@ public class PrivateCommands extends ListenerAdapter {
                 } catch (Exception e) {
                     event.getHook().sendMessage("Message was not sent, perhaps the channel-ID, or message-ID is incorrect?\nMake sure the referenced message is also in the same channel as your use of this command.").queue();
                 }
+                break;
+            }
+            case "set-match-timer" : {
+                event.deferReply(true).queue();
+                String response = "";
+                try {
+                    String mins = String.valueOf(Objects.requireNonNull(event.getOption("mins")).getAsInt());
+                    ProcessBuilder pb = new ProcessBuilder("python3.12", "matchTimer.py", mins);
+                    Process process = pb.start();
+                    process.onExit().get();
+
+                    // Read the output
+                    try (InputStream inputStream = process.getInputStream();
+                         BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream))) {
+                        String line;
+                        while ((line = reader.readLine()) != null) {
+                            response = "\n" + response + line;
+                        }
+                        response = response + " minutes is now the warfare match timer";
+                    }
+
+                    // Optionally, read from the error stream too
+                    try (InputStream errorStream = process.getErrorStream();
+                         BufferedReader errorReader = new BufferedReader(new InputStreamReader(errorStream))) {
+                        String errLine;
+                        while ((errLine = errorReader.readLine()) != null) {
+                            response = "\n" + response + errLine;
+                        }
+                    }
+
+                } catch (IOException | ExecutionException | InterruptedException e) {
+                    response = "erorr made... do you have a python3.12 matchTimer.py available in your project directory?\nError: " + e.getMessage();
+                }
+                event.getHook().sendMessage(response).queue();
+
                 break;
             }
             case "execute-sql" : {

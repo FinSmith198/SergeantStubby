@@ -53,6 +53,11 @@ public class BotReadier extends ListenerAdapter {
                     .setDefaultPermissions(DefaultMemberPermissions.DISABLED)
             );
 
+            commandData.add(Commands.slash("set-match-timer", "sets the match timer for a warfare match on the dd server").addOptions(
+                    new OptionData(OptionType.INTEGER, "mins", "The minutes of each warfare hll game", true)
+                    )
+            );
+
             commandData.add(Commands.slash("execute-sql", "sends an SQL Query to Stubby's Database, and Returns and Results.").addOptions(
                             new OptionData(OptionType.STRING, "sql", "the SQL of the query to be ran, make sure it's formatted correctly", true)
                     )

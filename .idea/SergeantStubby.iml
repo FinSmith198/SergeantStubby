@@ -10,5 +10,7 @@
     <orderEntry type="library" name="JDAwithDependencies" level="project" />
     <orderEntry type="library" name="json-simple-1.1.1" level="project" />
     <orderEntry type="library" name="sqlite-jdbc-3.42.0.0" level="project" />
+    <orderEntry type="library" name="JDA-5.5.1-withDependencies" level="project" />
+    <orderEntry type="library" name="logback-classic-1.5.18" level="project" />
   </component>
 </module>
