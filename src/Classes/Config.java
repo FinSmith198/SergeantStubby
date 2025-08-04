@@ -1,8 +1,6 @@
 package Classes;
 
-import org.json.simple.JSONObject;
 
-import java.nio.file.LinkOption;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -28,7 +26,7 @@ public class Config {
     public static Long ERROR_MESSAGE_CHANNEL;
     public static String APPLICATION_TICKET_LOGGING_CHANNEL;
     public static String APPLICATION_RECRUIT_GOOGLE_FORM_URL;
-    public static String WELCOME_CHANNEL;
+    public static String WELCOME_CHANNEL = "1397584180627640404";
 
 
     public static void init(String filePath){
@@ -54,6 +52,7 @@ public class Config {
                 APPLICATION_TICKET_LOGGING_CHANNEL = resultSet.getString("application_ticket_log_channel");
                 APPLICATION_RECRUIT_GOOGLE_FORM_URL = resultSet.getString("application_recruit_google_form_url");
             }
+            resultSet.close();
             databaseConnection.close();
 
         } catch (ClassNotFoundException | SQLException e) {

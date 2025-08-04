@@ -13,10 +13,7 @@ import net.dv8tion.jda.api.utils.MemberCachePolicy;
 
 import java.io.PrintWriter;
 import java.io.StringWriter;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.List;
 import java.util.Objects;
 
@@ -81,31 +78,51 @@ public class Bot {
     public static void addMemberToDatabase(Member member) throws ClassNotFoundException, SQLException {
         Class.forName("org.sqlite.JDBC");
         Connection c = DriverManager.getConnection("jdbc:sqlite:DDServerData.db");
-        c.createStatement().execute("INSERT INTO Members(ID, UserName) VALUES ("+member.getId()+", '"+member.getUser().getName()+"');");
+        System.out.println("connection made: add member to database");
+        c.prepareStatement("INSERT INTO Members(ID, UserName) VALUES ("+member.getId()+", '"+member.getUser().getName()+"') ON CONFLICT(ID) DO UPDATE SET UserName='"+member.getUser().getName()+"';").execute();
         c.close();
+        System.out.println("connection closed: add member to database");
     }
 
     public static void addMembersToDatabase(List<Member> members) throws ClassNotFoundException, SQLException {
         if (members.size() == 0)
             return;
 
+        System.out.println("connection attempt: add members to database");
         Class.forName("org.sqlite.JDBC");
         Connection c = DriverManager.getConnection("jdbc:sqlite:DDServerData.db");
+        System.out.println("connection made: add members to database");
         StringBuilder s = new StringBuilder("INSERT INTO Members(ID, UserName) VALUES");
-        for (Member member : members){
+        for (Member member : members)
             s.append(" ("+member.getId()+", '"+member.getUser().getName()+"'),");
-        }
+
         s.deleteCharAt(s.length()-1);
+        s.append(" ON CONFLICT REPLACE");
         s.append(';');
+
+        try {
+            c.prepareStatement(s.toString()).execute();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
         c.close();
+        System.out.println("connection closed: add members to database");
     }
 
 
     public static void addXPToMember(String memberID, long XP) throws ClassNotFoundException, SQLException {
+        System.out.println("connection attempt: add xp to member");
         Class.forName("org.sqlite.JDBC");
         Connection c = DriverManager.getConnection("jdbc:sqlite:DDServerData.db");
-
-        c.createStatement().execute("UPDATE Members SET XP_accumulator = XP_accumulator + "+XP+" WHERE ID = "+memberID+";");
+        try {
+            DatabaseMetaData metaData = c.getMetaData();
+            c.prepareStatement("UPDATE Members SET XP_accumulator = XP_accumulator + "+XP+" WHERE ID = "+memberID+";").execute();
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw new RuntimeException(e);
+        }
+        System.out.println("connection close: add xp to member");
         c.close();
     }
 
@@ -115,31 +132,43 @@ public class Bot {
         String sql = "UPDATE Members SET levelling_active = 0 WHERE ID = "+memberID+";";
         if (levelling) sql = "UPDATE Members SET levelling_active = 1 WHERE ID = "+memberID+";";
 
-        c.createStatement().execute(sql);
+        c.prepareStatement(sql).execute();
         c.close();
     }
 
     // returns current member xp, returns -1 if it is disabled for them
     public static int getMemberXP(String memberID) throws ClassNotFoundException, SQLException {
+        System.out.println("connection attempt: get xp from member");
+
         Class.forName("org.sqlite.JDBC");
         Connection c = DriverManager.getConnection("jdbc:sqlite:DDServerData.db");
-        ResultSet result = c.createStatement().executeQuery("SELECT XP, XP_accumulator FROM Members WHERE ID = "+memberID+" AND levelling_active = 1;");
+        PreparedStatement ps = c.prepareStatement("SELECT XP, XP_accumulator FROM Members WHERE ID = "+memberID+" AND levelling_active = 1;");
+        ResultSet result = ps.executeQuery();
 
         int XP = result.getInt(1) + result.getInt(2);
-        if (result.wasNull()) XP = -1;
+        if (result.wasNull())
+            XP = -1;
+        result.close();
+        ps.close();
         c.close();
+        System.out.println("connection close: get xp from member");
         return XP;
     }
 
     // returns current member xp in their accumulator
     public static long getMemberAccumulatedXP(String memberID) {
         try {
+            System.out.println("connection attempt: get xpacc from member");
             Class.forName("org.sqlite.JDBC");
             Connection c;
             c = DriverManager.getConnection("jdbc:sqlite:DDServerData.db");
-            ResultSet result = c.createStatement().executeQuery("SELECT XP_accumulator FROM Members WHERE ID = "+memberID+";");
-            long XP = result.getInt(1) ;
+            PreparedStatement ps = c.prepareStatement("SELECT XP_accumulator FROM Members WHERE ID = "+memberID+";");
+            ResultSet result = ps.executeQuery();
+            long XP = result.getInt(1);
+            result.close();
+            ps.close();
             c.close();
+            System.out.println("connection close: get xpacc from member");
             return XP;
         } catch (SQLException | ClassNotFoundException e) {
             sendErrorMessage(e);
@@ -160,21 +189,23 @@ public class Bot {
     }
 
     public static void sendErrorMessage(Exception e) {
-        if (jda == null || !jda.getStatus().equals(JDA.Status.CONNECTED) || Config.ERROR_MESSAGE_CHANNEL == null) {
-            e.printStackTrace();
-            return;
-        }
+        e.printStackTrace();
 
-        StringBuilder message = new StringBuilder();
-        message.append("## ");
-
-        StringWriter sw = new StringWriter();
-        PrintWriter pw = new PrintWriter(sw);
-        e.printStackTrace(pw);
-        message.append(sw);
-
-
-        Objects.requireNonNull(jda.getTextChannelById(Config.ERROR_MESSAGE_CHANNEL)).sendMessage(message.toString()).queue();
+//        if (jda == null || !jda.getStatus().equals(JDA.Status.CONNECTED) || Config.ERROR_MESSAGE_CHANNEL == null) {
+//            e.printStackTrace();
+//            return;
+//        }
+//
+//        StringBuilder message = new StringBuilder();
+//        message.append("## ");
+//
+//        StringWriter sw = new StringWriter();
+//        PrintWriter pw = new PrintWriter(sw);
+//        e.printStackTrace(pw);
+//        message.append(sw);
+//
+//
+//        Objects.requireNonNull(jda.getTextChannelById(Config.ERROR_MESSAGE_CHANNEL)).sendMessage(message.toString()).queue();
     }
 
     public static void pauseRuntime(long millis) {
