@@ -40,7 +40,7 @@ public class Bot {
                 );
 
         jda = builder.addEventListeners(
-                        dog_tag_restrictor, /*new WelcomeMessageListener(),*/ new BotReadier(), new CommunityXPController(),
+                        dog_tag_restrictor, new WelcomeMessageListener(), new BotReadier(), new CommunityXPController(),
                         new AdminCommands(), new FunCommands(), new PrivateCommands(),
                         new HLListener(), new MemberCounter(), new RecruitmentTicketController()
                 )
@@ -86,11 +86,17 @@ public class Bot {
     }
 
     public static void addMembersToDatabase(List<Member> members) throws ClassNotFoundException, SQLException {
+        if (members.size() == 0)
+            return;
+
         Class.forName("org.sqlite.JDBC");
         Connection c = DriverManager.getConnection("jdbc:sqlite:DDServerData.db");
+        StringBuilder s = new StringBuilder("INSERT INTO Members(ID, UserName) VALUES");
         for (Member member : members){
-            c.createStatement().execute("INSERT INTO Members(ID, UserName) VALUES ("+member.getId()+", '"+member.getUser().getName()+"');");
+            s.append(" ("+member.getId()+", '"+member.getUser().getName()+"'),");
         }
+        s.deleteCharAt(s.length()-1);
+        s.append(';');
         c.close();
     }
 

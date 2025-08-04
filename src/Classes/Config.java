@@ -28,6 +28,7 @@ public class Config {
     public static Long ERROR_MESSAGE_CHANNEL;
     public static String APPLICATION_TICKET_LOGGING_CHANNEL;
     public static String APPLICATION_RECRUIT_GOOGLE_FORM_URL;
+    public static String WELCOME_CHANNEL;
 
 
     public static void init(String filePath){
