@@ -92,7 +92,7 @@ public class Bot {
 
         Class.forName("org.sqlite.JDBC");
         Connection c = DriverManager.getConnection("jdbc:sqlite:DDServerData.db");
-        System.out.println("connection made: add members to database");
+//        System.out.println("connection made: add members to database");
         StringBuilder s = new StringBuilder("INSERT INTO Members(ID, UserName) VALUES");
         for (Member member : members)
             s.append(" ("+member.getId()+", '"+member.getUser().getName()+"'),");
