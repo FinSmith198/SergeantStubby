@@ -78,17 +78,18 @@ public class Bot {
     public static void addMemberToDatabase(Member member) throws ClassNotFoundException, SQLException {
         Class.forName("org.sqlite.JDBC");
         Connection c = DriverManager.getConnection("jdbc:sqlite:DDServerData.db");
-        System.out.println("connection made: add member to database");
+//        System.out.println("connection made: add member to database");
         c.prepareStatement("INSERT INTO Members(ID, UserName) VALUES ("+member.getId()+", '"+member.getUser().getName()+"') ON CONFLICT(ID) DO UPDATE SET UserName='"+member.getUser().getName()+"';").execute();
         c.close();
-        System.out.println("connection closed: add member to database");
+//        System.out.println("connection closed: add member to database");
     }
 
     public static void addMembersToDatabase(List<Member> members) throws ClassNotFoundException, SQLException {
         if (members.size() == 0)
             return;
 
-        System.out.println("connection attempt: add members to database");
+//        System.out.println("connection attempt: add members to database");
+
         Class.forName("org.sqlite.JDBC");
         Connection c = DriverManager.getConnection("jdbc:sqlite:DDServerData.db");
         System.out.println("connection made: add members to database");
@@ -107,12 +108,12 @@ public class Bot {
         }
 
         c.close();
-        System.out.println("connection closed: add members to database");
+//        System.out.println("connection closed: add members to database");
     }
 
 
     public static void addXPToMember(String memberID, long XP) throws ClassNotFoundException, SQLException {
-        System.out.println("connection attempt: add xp to member");
+//        System.out.println("connection attempt: add xp to member");
         Class.forName("org.sqlite.JDBC");
         Connection c = DriverManager.getConnection("jdbc:sqlite:DDServerData.db");
         try {
@@ -122,7 +123,7 @@ public class Bot {
             e.printStackTrace();
             throw new RuntimeException(e);
         }
-        System.out.println("connection close: add xp to member");
+//        System.out.println("connection close: add xp to member");
         c.close();
     }
 
@@ -138,7 +139,7 @@ public class Bot {
 
     // returns current member xp, returns -1 if it is disabled for them
     public static int getMemberXP(String memberID) throws ClassNotFoundException, SQLException {
-        System.out.println("connection attempt: get xp from member");
+//        System.out.println("connection attempt: get xp from member");
 
         Class.forName("org.sqlite.JDBC");
         Connection c = DriverManager.getConnection("jdbc:sqlite:DDServerData.db");
@@ -151,14 +152,14 @@ public class Bot {
         result.close();
         ps.close();
         c.close();
-        System.out.println("connection close: get xp from member");
+//        System.out.println("connection close: get xp from member");
         return XP;
     }
 
     // returns current member xp in their accumulator
     public static long getMemberAccumulatedXP(String memberID) {
         try {
-            System.out.println("connection attempt: get xpacc from member");
+//            System.out.println("connection attempt: get xpacc from member");
             Class.forName("org.sqlite.JDBC");
             Connection c;
             c = DriverManager.getConnection("jdbc:sqlite:DDServerData.db");
@@ -168,7 +169,7 @@ public class Bot {
             result.close();
             ps.close();
             c.close();
-            System.out.println("connection close: get xpacc from member");
+//            System.out.println("connection close: get xpacc from member");
             return XP;
         } catch (SQLException | ClassNotFoundException e) {
             sendErrorMessage(e);
