@@ -295,7 +295,7 @@ public class TagRestrictorListener extends ListenerAdapter {
             DDroleID = "1127629409772376144";
 
         String naem = member.getEffectiveName().replaceAll("\\[DDR]", "").trim();
-        String message = "<@&"+DDroleID+"> A new Recruit is here! \nIf anyone has played with them before, or has any feedback, feel free post it below 😊.\n\nRemember, when you vote, you need to put a reason behind it!";
+        String message = "<@&"+DDroleID+"> A new Recruit is here, please vote 😊!\n\n\n## How the Recruit Voting Process Works\n\nDuring the two-week recruit period, all DD members are encouraged to share their experiences and opinions about each recruit in their recruitment thread.\n\nYour feedback matters! Whether it's a `+1`, `-1` or simply an observation, it helps us understand if someone is a good fit for DD.\n\nAfter two weeks, Command, Operations Command, Community Command, Captains and Second Lieutenants vote on one of three outcomes:\n\n*Yes* – Accepted as a full DD member.\n\n*No* – Not accepted into DD.\n\n*Extend* – The recruit needs more time before a decision can be made.\n\nThe vote is based almost exclusively on the information and feedback provided in the recruit's thread.\n\nThis is why your feedback is important. The more constructive and objective information you share, the better we can make a fair and informed decision.";
 
         assert recruitBarracks != null;
         recruitBarracks.createThreadChannel(naem).queue(
